@@ -1,0 +1,141 @@
+﻿api_keys:
+  deepseek_api_key: ${DEEPSEEK_KEY}
+  deepseek_api_key_fallback: ${DEEPSEEK_KEY}
+  fred_api_key: ''
+  tushare_token: ${TUSHARE_TOKEN}
+  tushare_token_fallback: ${TUSHARE_TOKEN}
+data_sources:
+  tencent:
+    enabled: true
+    timeout: 10
+  tushare:
+    enabled: true
+    timeout: 15
+deepseek:
+  base_url: https://api.deepseek.com/v1
+  max_tokens: 4096
+  model: deepseek-chat
+  model_reasoner: deepseek-reasoner
+  temperature: 0.3
+  timeout: 60
+notifications:
+  obsidian:
+    daily_report_path: 30-日报
+    enabled: true
+    error_log_path: 60-错误本
+    trade_log_path: 10-交易/交易日志
+  telegram:
+    bot_token: ''
+    chat_id: ''
+    enabled: false
+  web_dashboard:
+    enabled: true
+    host: 127.0.0.1
+    port: 8088
+portfolio:
+  stocks:
+  - code: 301316.SZ
+    cost: 46.785
+    industry: 计算机
+    name: 慧博云通
+    stop: 43.04
+    stop_type: ma20
+    target: 130.0
+  - code: 300825.SZ
+    cost: 10.906
+    industry: 汽车
+    name: 阿尔特
+    stop: 10.03
+    stop_type: ma10
+    target: 15.0
+  - code: 002501.SZ
+    cost: 2.545
+    industry: 有色金属
+    name: '*ST利源'
+    stop: 2.34
+    stop_type: ma20
+    target: 8.0
+  - code: 600392.SH
+    cost: 19.972
+    industry: 有色金属
+    name: 盛和资源
+    stop: 18.37
+    stop_type: ma20
+    target: 39.94
+  - code: 002366.SZ
+    cost: 9.531
+    industry: 电力设备
+    name: 融发核电
+    stop: 8.77
+    stop_type: ma10
+    target: 11.44
+  - code: 688111.SH
+    cost: 431.437
+    industry: 计算机
+    name: 金山办公
+    stop: 396.92
+    stop_type: ma10
+    target: 517.72
+  - code: 301638.SZ
+    cost: 27.014
+    industry: 计算机
+    name: 南网数字
+    stop: 24.85
+    stop_type: ma10
+    target: 35.0
+  - code: 601929.SH
+    cost: 4.535
+    industry: 传媒
+    name: 吉视传媒
+    stop: 4.17
+    stop_type: ma20
+    target: 9.0
+  - code: 688107.SH
+    cost: 37.319
+    industry: 电子
+    name: 安路科技
+    stop: 33.17
+    stop_type: ma20
+    target: 54.08
+  - code: 603259.SH
+    cost: 99.01
+    industry: 医药生物
+    name: 药明康德
+    stop: 85.79
+    stop_type: ma20
+    target: 121.22
+  - code: 600905.SH
+    cost: 4.202
+    industry: 电力
+    name: 三峡能源
+    stop: 3.782
+    stop_type: ma20
+    target: 5.042
+schedule:
+  closing_analysis: '15:02'
+  evening_review: '18:00'
+  morning_pipeline: 08:30
+strategy:
+  factor_weights:
+    回撤深度: 0.0155
+    支撑强度: 0.1789
+    波动收敛: 0.3327
+    超卖强度: 0.1944
+    连跌衰竭: 0.1079
+    量价背离: 0.1705
+  signal_thresholds:
+    buy: 5.5
+    watch: 4
+    hold: 2.5
+    add: 6.0
+    hold_audit: 4.5
+    reduce: 3.0
+system:
+  base_dir: C:/Users/alienware/Desktop/duobao_v2
+  data_dir: C:/Users/alienware/Desktop/duobao_v2/data
+  log_dir: C:/Users/alienware/Desktop/duobao_v2/logs
+  obsidian_vault: C:/Users/alienware/Documents/多宝Vault
+  source_db: C:/Users/alienware/database/investment.db
+
+
+
