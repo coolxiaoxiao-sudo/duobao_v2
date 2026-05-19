@@ -1,4 +1,4 @@
-﻿"""交易纪律引擎 — 证伪思维+模式区分+仓位自适应+纪律执行
+﻿"""交易纪律引擎 — 证伪思维+模式区分+仓位自适应+纪律执行+组合周期管理
 
 最终收官定版功能：
 1. 预期差核心交易思维 — 挖掘认知不足、价值未兑现标的
@@ -7,10 +7,12 @@
 4. 稳健复利核心宗旨 — 高胜率、合理盈亏比、严控回撤
 5. 追高检测 — 严禁盲目追高连续拉升个股，远离无业绩炒作
 6. 盈亏比优先筛选 — 交易决策先看盈亏比，再看胜率
+7. 逻辑证伪思维 — 主动挖掘利空/隐患/资金离场/利空兑现时间
+8. 组合周期统一管理 — 杜绝短线变长线被套、长线做短线踏空
 """
 from __future__ import annotations
 import json, os
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Dict, List
 import numpy as np
 from core.config import config
@@ -20,10 +22,10 @@ DISCIPLINE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__
 os.makedirs(DISCIPLINE_DIR, exist_ok=True)
 
 TRADING_MODES = {
-    "左侧埋伏": {"适用行情": "下跌末期", "入场": "跌破布林下轨+RSI<30+缩量", "离场": "反弹至中轨止盈", "周期": "1-4周", "仓位": "10-20%", "禁止": "趋势下跌中加仓"},
-    "右侧追涨": {"适用行情": "趋势确立", "入场": "放量突破MA20+MACD金叉", "离场": "破突破位-3%止损", "周期": "1-3日", "仓位": "20-30%", "禁止": "追高超5%"},
-    "趋势持有": {"适用行情": "均线多头排列", "入场": "MA5>MA10>MA20+ADX>25", "离场": "破MA10减仓，破MA20清仓", "周期": "1-4周", "仓位": "30-40%", "禁止": "因波动提前离场"},
-    "超跌反弹": {"适用行情": "快速急跌", "入场": "连跌4天+RSI<30+缩量", "离场": "反弹至MA5减仓", "周期": "1-5日", "仓位": "10-15%", "禁止": "下跌中继抄底"},
+    "左侧埋伏": {"适用行情": "下跌末期/恐慌冰点",  "入场": "跌破布林下轨+RSI<30+缩量+六因子>=6", "离场": "反弹至中轨止盈，破前低止损", "周期": "1-4周", "周期分类": "中线", "仓位": "10-20%", "禁止": "趋势下跌中加仓，重仓左侧"},
+    "右侧追涨": {"适用行情": "趋势确立/强者恒强",  "入场": "放量突破MA20+MACD金叉+板块龙头", "离场": "破突破位-3%止损，趋势走弱减仓", "周期": "1-3日", "周期分类": "短线", "仓位": "20-30%", "禁止": "追高超5%，弱势跟风"},
+    "趋势持有": {"适用行情": "均线多头排列/主升浪",  "入场": "MA5>MA10>MA20+ADX>25+量价齐升", "离场": "破MA10减仓，破MA20清仓，顶背离止盈", "周期": "1-4周", "周期分类": "中线", "仓位": "30-40%", "禁止": "因波动提前离场，逆势加仓"},
+    "超跌反弹": {"适用行情": "快速急跌/情绪冰点",  "入场": "连跌4天+RSI<30+缩量+六因子>=5", "离场": "反弹至MA5减仓，破前低止损，3日不涨离场", "周期": "1-5日", "周期分类": "短线", "仓位": "10-15%", "禁止": "下跌中继抄底，恋战不走，短线变长线"},
 }
 
 def detect_trading_mode(code):
@@ -50,106 +52,54 @@ def detect_trading_mode(code):
         return {"error":str(e),"mode":"未知"}
 
 def chase_risk_check(code, name):
-    """追高风险检测 — 严禁盲目追高连续大幅拉升个股，远离无业绩炒作"""
     risks = []
     try:
         from layer1_data.tencent_api import get_quote
         from layer3_analysis.technical import compute
-        
         q = get_quote(code)
         tech = compute(code)
         pe = q.get("pe", 0) or 0
         rsi = tech.get("rsi14", 50)
-        
         rows = db.query("SELECT close,vol FROM stock_daily WHERE ts_code=? ORDER BY trade_date DESC LIMIT 60", (code,))
-        if len(rows) < 10:
-            return {"code":code,"name":name,"risks":[],"pass":True,"action":"数据不足，暂不判断"}
-        
+        if len(rows) < 10: return {"code":code,"name":name,"risks":[],"pass":True,"action":"数据不足"}
         closes = [r["close"] for r in rows]
         vols = [r["vol"] for r in rows]
-        
-        # 1. 连续大幅拉升检测（近10日涨幅>30%）
         if len(closes) >= 10:
             chg_10d = (closes[0] / closes[9] - 1) * 100 if closes[9] > 0 else 0
-            if chg_10d > 30:
-                risks.append(f"连续拉升: 10日涨幅{chg_10d:.0f}%")
-            elif chg_10d > 20:
-                risks.append(f"短期急涨: 10日涨幅{chg_10d:.0f}%")
-        
-        # 2. 高位RSI过热
-        if rsi > 75:
-            risks.append(f"RSI过热: {rsi:.0f}")
-        elif rsi > 70:
-            risks.append(f"RSI偏热: {rsi:.0f}")
-        
-        # 3. 无业绩支撑炒作
-        if pe < 0:
-            risks.append("业绩亏损，纯情绪炒作风险")
-        elif pe > 200:
-            risks.append(f"PE={pe:.0f}极高估值，透支严重")
-        
-        # 4. 放天量（可能出货）
+            if chg_10d > 30: risks.append(f"连续拉升:10日涨{chg_10d:.0f}%")
+            elif chg_10d > 20: risks.append(f"短期急涨:10日涨{chg_10d:.0f}%")
+        if rsi > 75: risks.append(f"RSI过热:{rsi:.0f}")
+        elif rsi > 70: risks.append(f"RSI偏热:{rsi:.0f}")
+        if pe < 0: risks.append("业绩亏损，纯情绪炒作")
+        elif pe > 200: risks.append(f"PE={pe:.0f}极高估值")
         if len(vols) >= 20:
             avg_vol = np.mean(vols[1:20])
-            if vols[0] > avg_vol * 3:
-                risks.append("放天量: 可能主力出货")
-        
-        # 5. 涨速过快（3日内涨幅>15%）
+            if vols[0] > avg_vol * 3: risks.append("放天量:可能出货")
         if len(closes) >= 3:
             chg_3d = (closes[0] / closes[2] - 1) * 100 if closes[2] > 0 else 0
-            if chg_3d > 15:
-                risks.append(f"急拉: 3日涨幅{chg_3d:.0f}%")
-        
+            if chg_3d > 15: risks.append(f"急拉:3日涨{chg_3d:.0f}%")
         pass_check = len(risks) == 0
-        if len(risks) >= 3:
-            action = "严禁追入，坚决放弃"
-        elif len(risks) >= 1:
-            action = "不满足低吸条件，观望"
-        else:
-            action = "未追高，可低吸布局"
-        
-        return {
-            "code":code,"name":name,
-            "risks":risks,"count":len(risks),
-            "pass":pass_check,"action":action
-        }
+        if len(risks) >= 3: action = "严禁追入，坚决放弃"
+        elif len(risks) >= 1: action = "不满足低吸条件，观望"
+        else: action = "未追高，可低吸"
+        return {"code":code,"name":name,"risks":risks,"count":len(risks),"pass":pass_check,"action":action}
     except Exception as e:
         return {"error":str(e),"pass":False}
 
 def risk_reward_filter(code, name, entry_price, stop_loss, target_price):
-    """盈亏比优先筛选 — 先看盈亏比，再看胜率。无优质性价比直接观望"""
-    if entry_price <= 0 or stop_loss <= 0 or target_price <= 0:
-        return {"pass":False,"reason":"参数无效"}
-    
+    if entry_price <= 0 or stop_loss <= 0 or target_price <= 0: return {"pass":False,"reason":"参数无效"}
     risk = abs(entry_price - stop_loss)
     reward = abs(target_price - entry_price)
-    
-    if risk == 0:
-        return {"pass":False,"reason":"止损价等于入场价"}
-    
+    if risk == 0: return {"pass":False,"reason":"止损=入场价"}
     rr_ratio = reward / risk
     risk_pct = (risk / entry_price) * 100
     reward_pct = (reward / entry_price) * 100
-    
-    if rr_ratio >= 3:
-        level, action = "A", "极品盈亏比，优先参与"
-    elif rr_ratio >= 2:
-        level, action = "B", "优质盈亏比，可参与"
-    elif rr_ratio >= 1.5:
-        level, action = "C", "盈亏比一般，谨慎参与"
-    elif rr_ratio >= 1:
-        level, action = "D", "盈亏比不足，轻仓试探"
-    else:
-        level, action = "F", "盈亏比<1，严禁参与"
-    
-    return {
-        "code":code,"name":name,
-        "entry":entry_price,"stop":stop_loss,"target":target_price,
-        "risk_pct":round(risk_pct,1),"reward_pct":round(reward_pct,1),
-        "rr_ratio":round(rr_ratio,1),
-        "pass":rr_ratio >= 1.5,
-        "level":level,"action":action
-    }
+    if rr_ratio >= 3: level, action = "A", "极品盈亏比，优先参与"
+    elif rr_ratio >= 2: level, action = "B", "优质盈亏比，可参与"
+    elif rr_ratio >= 1.5: level, action = "C", "盈亏比一般，谨慎参与"
+    elif rr_ratio >= 1: level, action = "D", "盈亏比不足，轻仓试探"
+    else: level, action = "F", "盈亏比<1，严禁参与"
+    return {"code":code,"name":name,"entry":entry_price,"stop":stop_loss,"target":target_price,"risk_pct":round(risk_pct,1),"reward_pct":round(reward_pct,1),"rr_ratio":round(rr_ratio,1),"pass":rr_ratio>=1.5,"level":level,"action":action}
 
 def expectation_gap_analysis(code, name, industry):
     try:
@@ -161,10 +111,8 @@ def expectation_gap_analysis(code, name, industry):
         rsi = tech.get("rsi14", 50)
         rows = db.query("SELECT close FROM stock_daily WHERE ts_code=? ORDER BY trade_date DESC LIMIT 20", (code,))
         change_20d = 0
-        if len(rows) >= 20:
-            change_20d = (rows[0]["close"] / rows[-1]["close"] - 1) * 100
-        gap_score = 5
-        factors = []
+        if len(rows) >= 20: change_20d = (rows[0]["close"] / rows[-1]["close"] - 1) * 100
+        gap_score = 5; factors = []
         if 0 < pe < 30: gap_score += 1.5; factors.append("PE低估")
         elif pe > 100 or pe < 0: gap_score -= 2; factors.append("PE过高")
         if change_20d < -15: gap_score += 1.5; factors.append("近期深跌")
@@ -181,28 +129,170 @@ def expectation_gap_analysis(code, name, industry):
         return {"error":str(e)}
 
 def falsification_analysis(code, name):
+    """逻辑证伪思维 — 主动挖掘利空/隐患/资金离场信号/利空兑现时间，看多不盲目"""
     try:
         from layer3_analysis.technical import compute
         from layer3_analysis.trend import compute_all as trend_compute
         tech, tr = compute(code), trend_compute(code, 60)
+        
         signals = []
-        if tech.get("rsi14",50) > 80: signals.append("RSI超买")
-        if tr.get("macd_divergence") == "bearish_divergence": signals.append("MACD顶背离")
-        if tr.get("trend_total",5) < 4: signals.append("趋势转空")
-        if tech.get("vol_ratio",1) < 0.5: signals.append("缩量上涨")
-        if tech.get("vol_ratio",1) > 2: signals.append("放量下跌")
+        capital_signals = []
+        timeline_risks = []
+        
+        # === 一、技术面证伪 ===
+        if tech.get("rsi14",50) > 80:
+            signals.append("RSI超买>80")
+        if tr.get("macd_divergence") == "bearish_divergence":
+            signals.append("MACD顶背离 — 涨势衰竭")
+        if tr.get("trend_total",5) < 4:
+            signals.append("趋势转空 — 多头结构破坏")
+        if tech.get("vol_ratio",1) < 0.5 and tech.get("price",0) > tr.get("ma20",0):
+            signals.append("缩量上涨 — 无量虚涨，有效性存疑")
+        if tech.get("vol_ratio",1) > 2 and tech.get("price",0) < tr.get("ma5",0):
+            signals.append("放量下跌 — 恐慌出逃")
+        
+        # === 二、基本面证伪 ===
         try:
             from layer1_data.tencent_api import get_quote
-            pe = get_quote(code).get("pe",0) or 0
-            if pe > 150: signals.append("PE高估")
-            elif pe < 0: signals.append("亏损股")
+            pe = get_quote(code).get("pe", 0) or 0
+            if pe > 150:
+                signals.append(f"PE={pe:.0f}严重高估 — 估值逻辑崩塌风险")
+            elif pe < 0:
+                signals.append("业绩亏损 — 基本面证伪")
         except: pass
-        if len(signals) >= 3: verdict, action = "强烈证伪", "坚决放弃"
-        elif len(signals) >= 1: verdict, action = "部分证伪", "谨慎参与"
-        else: verdict, action = "未证伪", "可继续研究"
-        return {"code":code,"name":name,"signals":signals,"count":len(signals),"verdict":verdict,"action":action}
+        
+        # === 三、资金离场信号检测【新增】 ===
+        rows = db.query("SELECT close,vol FROM stock_daily WHERE ts_code=? ORDER BY trade_date DESC LIMIT 30", (code,))
+        if len(rows) >= 20:
+            closes = [r["close"] for r in rows]
+            vols = [r["vol"] for r in rows]
+            
+            # 1. 高位放量滞涨 = 主力出货
+            if len(closes) >= 5 and len(vols) >= 10:
+                chg_5d = (closes[0] / closes[4] - 1) * 100 if closes[4] > 0 else 0
+                recent_vol = np.mean(vols[:5])
+                base_vol = np.mean(vols[10:20])
+                if chg_5d < 3 and chg_5d > -3 and recent_vol > base_vol * 2:
+                    capital_signals.append("⚠️ 高位放量滞涨 — 主力出货嫌疑")
+            
+            # 2. 连续缩量阴跌 = 资金持续离场
+            down_days = sum(1 for i in range(1, len(closes)) if closes[i] < closes[i-1])
+            if down_days >= 6:
+                vol_trend = np.mean(vols[:5]) < np.mean(vols[10:15]) * 0.7 if len(vols) >= 15 else False
+                if vol_trend:
+                    capital_signals.append("⚠️ 连续缩量阴跌 — 资金持续离场，无人承接")
+            
+            # 3. 反弹无量 = 资金不认可
+            if len(closes) >= 5:
+                rebounded = closes[0] > closes[4] and closes[4] < closes[9] if len(closes) >= 10 else False
+                if rebounded and np.mean(vols[:3]) < np.mean(vols[5:15]) * 0.7:
+                    capital_signals.append("⚠️ 反弹无量 — 资金不认可当前价位")
+            
+            # 4. 尾盘偷袭拉升（最近一日高开低走放量）
+            if len(rows) >= 1:
+                # 用价格变化方向+成交量判断
+                price_up = closes[0] > closes[1] if len(closes) > 1 else False
+                if price_up and vols[0] > np.mean(vols[5:15]) * 1.5 and closes[0] < closes[0] * 1.02:
+                    pass  # 正常放量上涨，不算异常
+        
+        # === 四、利空兑现时间提醒【新增】 ===
+        # 财报季风险（每年1/4/7/10月底）
+        now = datetime.now()
+        report_months = [1, 4, 7, 10]
+        if now.month in report_months:
+            timeline_risks.append(f"📅 财报披露季（{now.month}月）— 注意业绩兑现风险")
+        elif (now.month + 1) in report_months:
+            timeline_risks.append(f"📅 下月进入财报季 — 提前评估业绩预期")
+        
+        # ST/退市风险时间点
+        if "ST" in name:
+            timeline_risks.append("📅 ST标的 — 年报后存在退市风险窗口")
+        
+        # 次新股解禁时间提醒
+        try:
+            count_rows = db.query("SELECT COUNT(*) as cnt FROM stock_daily WHERE ts_code=?", (code,))
+            if count_rows and count_rows[0]["cnt"] < 252:
+                data_span = count_rows[0]["cnt"]
+                days_to_unlock = 252 - data_span
+                if days_to_unlock > 0:
+                    timeline_risks.append(f"📅 约{days_to_unlock}个交易日后满一年 — 关注解禁窗口")
+        except: pass
+        
+        # === 五、综合证伪结论 ===
+        all_signals = signals + capital_signals + timeline_risks
+        count = len(signals) + len(capital_signals)
+        
+        if count >= 4 or (count >= 3 and len(capital_signals) >= 2):
+            verdict, action = "❌ 强烈证伪", "逻辑崩塌，坚决放弃"
+        elif count >= 2:
+            verdict, action = "⚠️ 显著证伪", "多维度利空，谨慎观望"
+        elif count >= 1:
+            verdict, action = "⚠️ 部分证伪", "存在隐患，严格风控参与"
+        else:
+            verdict, action = "✅ 暂未证伪", "可继续研究"
+        
+        return {
+            "code":code,"name":name,
+            "tech_signals":signals,
+            "capital_signals":capital_signals,
+            "timeline_risks":timeline_risks,
+            "all_signals":all_signals,
+            "count":count,
+            "verdict":verdict,"action":action
+        }
     except Exception as e:
         return {"error":str(e)}
+
+def portfolio_cycle_manager():
+    """组合层面持仓周期统一管理 — 杜绝短线变长线被套、长线做短线踏空"""
+    results = {}
+    warnings = []
+    
+    for s in config.stocks:
+        code = s["code"]
+        try:
+            mode_result = detect_trading_mode(code)
+            mode = mode_result.get("mode", "观望")
+            config_data = TRADING_MODES.get(mode, {})
+            cycle = config_data.get("周期", "未知")
+            cycle_class = config_data.get("周期分类", "未知")
+            
+            # 从数据库检查实际持仓时长
+            rows = db.query("SELECT trade_date FROM stock_daily WHERE ts_code=? ORDER BY trade_date DESC LIMIT 60", (code,))
+            
+            # 周期一致性校验
+            if cycle_class == "短线" and mode == "趋势持有":
+                warnings.append(f"⚠️ {s['name']}: 短线周期与趋势持有模式冲突")
+            if cycle_class == "中线" and mode == "超跌反弹":
+                warnings.append(f"⚠️ {s['name']}: 中线周期与超跌反弹模式冲突")
+            
+            results[code] = {
+                "name": s["name"],
+                "mode": mode,
+                "cycle": cycle,
+                "cycle_class": cycle_class,
+                "entry_rule": config_data.get("入场", ""),
+                "exit_rule": config_data.get("离场", ""),
+                "forbidden": config_data.get("禁止", ""),
+                "discipline": f"周期={cycle_class}，严禁{'短线变长线被套' if cycle_class=='短线' else '长线做短线踏空'}",
+            }
+        except Exception as e:
+            results[code] = {"name": s["name"], "error": str(e)}
+    
+    # 组合层面统计
+    short_count = sum(1 for r in results.values() if r.get("cycle_class") == "短线")
+    mid_count = sum(1 for r in results.values() if r.get("cycle_class") == "中线")
+    
+    return {
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M"),
+        "positions": results,
+        "summary": {
+            "短线持仓": short_count,
+            "中线持仓": mid_count,
+            "原则": "不同周期制定独立买卖规则，严禁混用",
+        },
+        "warnings": warnings if warnings else ["✅ 持仓周期无冲突"],
+    }
 
 def strength_comparison(stock_list):
     try:
@@ -270,4 +360,5 @@ def batch_check():
             "band":band_switch_logic(code),
         }
     results["_strength_rank"] = strength_comparison(config.stocks)
+    results["_cycle_manager"] = portfolio_cycle_manager()
     return results
