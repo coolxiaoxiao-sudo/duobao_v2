@@ -1,0 +1,95 @@
+{
+  "code": "688111.SH",
+  "name": "金山办公",
+  "date": "2026-05-19",
+  "cycles": {
+    "月线": {
+      "period": "月线",
+      "price": 253.88,
+      "ma5": 254.72,
+      "ma10": 261.45,
+      "ma20": 255.54,
+      "ma60": 261.43,
+      "trend": "SIDEWAYS",
+      "trend_score": 5,
+      "rsi": 53.4,
+      "macd": {
+        "dif": 0.656,
+        "dea": 0.827,
+        "hist": -0.171
+      }
+    },
+    "周线": {
+      "period": "周线",
+      "price": 253.88,
+      "ma5": 254.72,
+      "ma10": 261.45,
+      "ma20": 255.54,
+      "ma60": 261.43,
+      "trend": "SIDEWAYS",
+      "trend_score": 5,
+      "rsi": 53.4,
+      "macd": {
+        "dif": 0.902,
+        "dea": 1.189,
+        "hist": -0.288
+      }
+    },
+    "日线": {
+      "period": "日线",
+      "price": 253.88,
+      "ma5": 254.72,
+      "ma10": 261.45,
+      "ma20": 255.54,
+      "ma60": 261.43,
+      "trend": "SIDEWAYS",
+      "trend_score": 5,
+      "rsi": 53.4,
+      "macd": {
+        "dif": 0.656,
+        "dea": 0.827,
+        "hist": -0.171
+      }
+    },
+    "60分钟": {
+      "period": "60分钟",
+      "price": 253.88,
+      "ma5": 254.72,
+      "ma10": 261.45,
+      "ma20": 255.54,
+      "ma60": 261.43,
+      "trend": "SIDEWAYS",
+      "trend_score": 5,
+      "rsi": 53.4,
+      "macd": {
+        "dif": 0.656,
+        "dea": 0.827,
+        "hist": -0.171
+      }
+    },
+    "15分钟": {
+      "period": "15分钟",
+      "price": 253.88,
+      "ma5": 254.72,
+      "ma10": 261.45,
+      "ma20": 255.54,
+      "ma60": 261.43,
+      "trend": "SIDEWAYS",
+      "trend_score": 5,
+      "rsi": 53.4,
+      "macd": {
+        "dif": 0.656,
+        "dea": 0.827,
+        "hist": -0.171
+      }
+    }
+  },
+  "big_trend_score": 5.0,
+  "mid_trend_score": 5,
+  "small_trend_score": 5.0,
+  "resonance": "MIXED",
+  "direction": "周期分歧，方向不明",
+  "trade_action": "观望等待，不做方向性押注",
+  "divergence_signals": [],
+  "consistency": "看多周期0/5, 看空周期0/5"
+}

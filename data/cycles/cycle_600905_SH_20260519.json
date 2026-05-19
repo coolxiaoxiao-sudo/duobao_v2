@@ -1,0 +1,95 @@
+{
+  "code": "600905.SH",
+  "name": "三峡能源",
+  "date": "2026-05-19",
+  "cycles": {
+    "月线": {
+      "period": "月线",
+      "price": 4.2,
+      "ma5": 4.18,
+      "ma10": 4.16,
+      "ma20": 4.13,
+      "ma60": 4.21,
+      "trend": "SIDEWAYS",
+      "trend_score": 5,
+      "rsi": 55.3,
+      "macd": {
+        "dif": 0.0,
+        "dea": -0.011,
+        "hist": 0.011
+      }
+    },
+    "周线": {
+      "period": "周线",
+      "price": 4.2,
+      "ma5": 4.18,
+      "ma10": 4.16,
+      "ma20": 4.13,
+      "ma60": 4.21,
+      "trend": "SIDEWAYS",
+      "trend_score": 5,
+      "rsi": 55.3,
+      "macd": {
+        "dif": -0.002,
+        "dea": -0.014,
+        "hist": 0.012
+      }
+    },
+    "日线": {
+      "period": "日线",
+      "price": 4.2,
+      "ma5": 4.18,
+      "ma10": 4.16,
+      "ma20": 4.13,
+      "ma60": 4.21,
+      "trend": "SIDEWAYS",
+      "trend_score": 5,
+      "rsi": 55.3,
+      "macd": {
+        "dif": 0.0,
+        "dea": -0.011,
+        "hist": 0.011
+      }
+    },
+    "60分钟": {
+      "period": "60分钟",
+      "price": 4.2,
+      "ma5": 4.18,
+      "ma10": 4.16,
+      "ma20": 4.13,
+      "ma60": 4.21,
+      "trend": "SIDEWAYS",
+      "trend_score": 5,
+      "rsi": 55.3,
+      "macd": {
+        "dif": 0.0,
+        "dea": -0.011,
+        "hist": 0.011
+      }
+    },
+    "15分钟": {
+      "period": "15分钟",
+      "price": 4.2,
+      "ma5": 4.18,
+      "ma10": 4.16,
+      "ma20": 4.13,
+      "ma60": 4.21,
+      "trend": "SIDEWAYS",
+      "trend_score": 5,
+      "rsi": 55.3,
+      "macd": {
+        "dif": 0.0,
+        "dea": -0.011,
+        "hist": 0.011
+      }
+    }
+  },
+  "big_trend_score": 5.0,
+  "mid_trend_score": 5,
+  "small_trend_score": 5.0,
+  "resonance": "MIXED",
+  "direction": "周期分歧，方向不明",
+  "trade_action": "观望等待，不做方向性押注",
+  "divergence_signals": [],
+  "consistency": "看多周期0/5, 看空周期0/5"
+}

@@ -1,0 +1,380 @@
+{
+  "301316.SZ": {
+    "code": "301316.SZ",
+    "name": "慧博云通",
+    "price": 56.62,
+    "date": "2026-05-19",
+    "flows": {
+      "机构主力": {
+        "score": 3,
+        "intensity": "弱",
+        "signals": [
+          "阳线占比160%"
+        ]
+      },
+      "游资": {
+        "score": 0,
+        "intensity": "弱",
+        "signals": []
+      },
+      "北向资金": {
+        "score": 0,
+        "intensity": "弱",
+        "signals": []
+      },
+      "散户": {
+        "score": 4,
+        "intensity": "中",
+        "signals": [
+          "缩量上涨"
+        ]
+      }
+    },
+    "dominant": "散户",
+    "intent": "散户主导，注意风险"
+  },
+  "300825.SZ": {
+    "code": "300825.SZ",
+    "name": "阿尔特",
+    "price": 12.35,
+    "date": "2026-05-19",
+    "flows": {
+      "机构主力": {
+        "score": 3,
+        "intensity": "弱",
+        "signals": [
+          "阳线占比135%"
+        ]
+      },
+      "游资": {
+        "score": 3,
+        "intensity": "弱",
+        "signals": [
+          "高频波动5.2%"
+        ]
+      },
+      "北向资金": {
+        "score": 0,
+        "intensity": "弱",
+        "signals": []
+      },
+      "散户": {
+        "score": 0,
+        "intensity": "弱",
+        "signals": []
+      }
+    },
+    "dominant": "机构主力",
+    "intent": "机构低吸，不追涨"
+  },
+  "002501.SZ": {
+    "code": "002501.SZ",
+    "name": "*ST利源",
+    "price": 1.39,
+    "date": "2026-05-19",
+    "flows": {
+      "机构主力": {
+        "score": 3,
+        "intensity": "弱",
+        "signals": [
+          "阳线占比90%"
+        ]
+      },
+      "游资": {
+        "score": 0,
+        "intensity": "弱",
+        "signals": []
+      },
+      "北向资金": {
+        "score": 0,
+        "intensity": "弱",
+        "signals": []
+      },
+      "散户": {
+        "score": 0,
+        "intensity": "弱",
+        "signals": []
+      }
+    },
+    "dominant": "机构主力",
+    "intent": "机构低吸，不追涨"
+  },
+  "600392.SH": {
+    "code": "600392.SH",
+    "name": "盛和资源",
+    "price": 23.22,
+    "date": "2026-05-19",
+    "flows": {
+      "机构主力": {
+        "score": 3,
+        "intensity": "弱",
+        "signals": [
+          "阳线占比125%"
+        ]
+      },
+      "游资": {
+        "score": 3,
+        "intensity": "弱",
+        "signals": [
+          "高频波动9.3%"
+        ]
+      },
+      "北向资金": {
+        "score": 2,
+        "intensity": "弱",
+        "signals": [
+          "量能稳定"
+        ]
+      },
+      "散户": {
+        "score": 0,
+        "intensity": "弱",
+        "signals": []
+      }
+    },
+    "dominant": "机构主力",
+    "intent": "机构低吸，不追涨"
+  },
+  "002366.SZ": {
+    "code": "002366.SZ",
+    "name": "融发核电",
+    "price": 7.56,
+    "date": "2026-05-19",
+    "flows": {
+      "机构主力": {
+        "score": 3,
+        "intensity": "弱",
+        "signals": [
+          "阳线占比150%"
+        ]
+      },
+      "游资": {
+        "score": 4,
+        "intensity": "中",
+        "signals": [
+          "近期2次脉冲放量"
+        ]
+      },
+      "北向资金": {
+        "score": 0,
+        "intensity": "弱",
+        "signals": []
+      },
+      "散户": {
+        "score": 0,
+        "intensity": "弱",
+        "signals": []
+      }
+    },
+    "dominant": "游资",
+    "intent": "游资试探，不宜重仓"
+  },
+  "688111.SH": {
+    "code": "688111.SH",
+    "name": "金山办公",
+    "price": 253.88,
+    "date": "2026-05-19",
+    "flows": {
+      "机构主力": {
+        "score": 3,
+        "intensity": "弱",
+        "signals": [
+          "阳线占比135%"
+        ]
+      },
+      "游资": {
+        "score": 0,
+        "intensity": "弱",
+        "signals": []
+      },
+      "北向资金": {
+        "score": 3,
+        "intensity": "中",
+        "signals": [
+          "PE=32.6"
+        ]
+      },
+      "散户": {
+        "score": 0,
+        "intensity": "弱",
+        "signals": []
+      }
+    },
+    "dominant": "机构主力",
+    "intent": "机构低吸，不追涨"
+  },
+  "301638.SZ": {
+    "code": "301638.SZ",
+    "name": "南网数字",
+    "price": 30.6,
+    "date": "2026-05-19",
+    "flows": {
+      "机构主力": {
+        "score": 3,
+        "intensity": "弱",
+        "signals": [
+          "阳线占比155%"
+        ]
+      },
+      "游资": {
+        "score": 7,
+        "intensity": "强",
+        "signals": [
+          "近期3次脉冲放量",
+          "高频波动18.1%"
+        ]
+      },
+      "北向资金": {
+        "score": 0,
+        "intensity": "弱",
+        "signals": []
+      },
+      "散户": {
+        "score": 4,
+        "intensity": "中",
+        "signals": [
+          "缩量上涨"
+        ]
+      }
+    },
+    "dominant": "游资",
+    "intent": "游资试探，不宜重仓"
+  },
+  "601929.SH": {
+    "code": "601929.SH",
+    "name": "吉视传媒",
+    "price": 3.33,
+    "date": "2026-05-19",
+    "flows": {
+      "机构主力": {
+        "score": 6,
+        "intensity": "中",
+        "signals": [
+          "阳线占比140%",
+          "压盘吸筹"
+        ]
+      },
+      "游资": {
+        "score": 3,
+        "intensity": "弱",
+        "signals": [
+          "高频波动6.9%"
+        ]
+      },
+      "北向资金": {
+        "score": 0,
+        "intensity": "弱",
+        "signals": []
+      },
+      "散户": {
+        "score": 0,
+        "intensity": "弱",
+        "signals": []
+      }
+    },
+    "dominant": "机构主力",
+    "intent": "机构低吸，不追涨"
+  },
+  "688107.SH": {
+    "code": "688107.SH",
+    "name": "安路科技",
+    "price": 45.38,
+    "date": "2026-05-19",
+    "flows": {
+      "机构主力": {
+        "score": 3,
+        "intensity": "弱",
+        "signals": [
+          "阳线占比170%"
+        ]
+      },
+      "游资": {
+        "score": 0,
+        "intensity": "弱",
+        "signals": []
+      },
+      "北向资金": {
+        "score": 0,
+        "intensity": "弱",
+        "signals": []
+      },
+      "散户": {
+        "score": 4,
+        "intensity": "中",
+        "signals": [
+          "缩量上涨"
+        ]
+      }
+    },
+    "dominant": "散户",
+    "intent": "散户主导，注意风险"
+  },
+  "603259.SH": {
+    "code": "603259.SH",
+    "name": "药明康德",
+    "price": 101.43,
+    "date": "2026-05-19",
+    "flows": {
+      "机构主力": {
+        "score": 3,
+        "intensity": "弱",
+        "signals": [
+          "阳线占比140%"
+        ]
+      },
+      "游资": {
+        "score": 0,
+        "intensity": "弱",
+        "signals": []
+      },
+      "北向资金": {
+        "score": 3,
+        "intensity": "中",
+        "signals": [
+          "PE=15.09"
+        ]
+      },
+      "散户": {
+        "score": 0,
+        "intensity": "弱",
+        "signals": []
+      }
+    },
+    "dominant": "机构主力",
+    "intent": "机构低吸，不追涨"
+  },
+  "600905.SH": {
+    "code": "600905.SH",
+    "name": "三峡能源",
+    "price": 4.2,
+    "date": "2026-05-19",
+    "flows": {
+      "机构主力": {
+        "score": 3,
+        "intensity": "弱",
+        "signals": [
+          "阳线占比140%"
+        ]
+      },
+      "游资": {
+        "score": 4,
+        "intensity": "中",
+        "signals": [
+          "近期3次脉冲放量"
+        ]
+      },
+      "北向资金": {
+        "score": 0,
+        "intensity": "弱",
+        "signals": []
+      },
+      "散户": {
+        "score": 0,
+        "intensity": "弱",
+        "signals": []
+      }
+    },
+    "dominant": "游资",
+    "intent": "游资试探，不宜重仓"
+  }
+}

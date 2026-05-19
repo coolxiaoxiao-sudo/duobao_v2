@@ -1,0 +1,24 @@
+{
+  "date": "2026-05-19",
+  "overall": "ORANGE",
+  "defense_action": "【警戒】减仓至5成，严控风险",
+  "market_crash": {
+    "type": "大盘跳水",
+    "risk_level": "LOW",
+    "score": 0,
+    "signals": [],
+    "action": "密切关注"
+  },
+  "sector_collapse": {
+    "type": "板块退潮",
+    "at_risk_sectors": [
+      "有色金属"
+    ],
+    "action": "有色金属板块集体走弱，减仓避险"
+  },
+  "liquidity": {
+    "type": "流动性",
+    "risk_level": "LOW",
+    "action": "正常"
+  }
+}

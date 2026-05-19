@@ -1,0 +1,95 @@
+{
+  "code": "002366.SZ",
+  "name": "融发核电",
+  "date": "2026-05-19",
+  "cycles": {
+    "月线": {
+      "period": "月线",
+      "price": 7.56,
+      "ma5": 7.63,
+      "ma10": 7.63,
+      "ma20": 7.45,
+      "ma60": 7.63,
+      "trend": "SIDEWAYS",
+      "trend_score": 5,
+      "rsi": 69.4,
+      "macd": {
+        "dif": 0.043,
+        "dea": 0.019,
+        "hist": 0.024
+      }
+    },
+    "周线": {
+      "period": "周线",
+      "price": 7.56,
+      "ma5": 7.63,
+      "ma10": 7.63,
+      "ma20": 7.45,
+      "ma60": 7.63,
+      "trend": "SIDEWAYS",
+      "trend_score": 5,
+      "rsi": 69.4,
+      "macd": {
+        "dif": 0.044,
+        "dea": 0.021,
+        "hist": 0.023
+      }
+    },
+    "日线": {
+      "period": "日线",
+      "price": 7.56,
+      "ma5": 7.63,
+      "ma10": 7.63,
+      "ma20": 7.45,
+      "ma60": 7.63,
+      "trend": "SIDEWAYS",
+      "trend_score": 5,
+      "rsi": 69.4,
+      "macd": {
+        "dif": 0.043,
+        "dea": 0.019,
+        "hist": 0.024
+      }
+    },
+    "60分钟": {
+      "period": "60分钟",
+      "price": 7.56,
+      "ma5": 7.63,
+      "ma10": 7.63,
+      "ma20": 7.45,
+      "ma60": 7.63,
+      "trend": "SIDEWAYS",
+      "trend_score": 5,
+      "rsi": 69.4,
+      "macd": {
+        "dif": 0.043,
+        "dea": 0.019,
+        "hist": 0.024
+      }
+    },
+    "15分钟": {
+      "period": "15分钟",
+      "price": 7.56,
+      "ma5": 7.63,
+      "ma10": 7.63,
+      "ma20": 7.45,
+      "ma60": 7.63,
+      "trend": "SIDEWAYS",
+      "trend_score": 5,
+      "rsi": 69.4,
+      "macd": {
+        "dif": 0.043,
+        "dea": 0.019,
+        "hist": 0.024
+      }
+    }
+  },
+  "big_trend_score": 5.0,
+  "mid_trend_score": 5,
+  "small_trend_score": 5.0,
+  "resonance": "MIXED",
+  "direction": "周期分歧，方向不明",
+  "trade_action": "观望等待，不做方向性押注",
+  "divergence_signals": [],
+  "consistency": "看多周期0/5, 看空周期0/5"
+}

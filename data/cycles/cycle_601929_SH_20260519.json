@@ -1,0 +1,95 @@
+{
+  "code": "601929.SH",
+  "name": "吉视传媒",
+  "date": "2026-05-19",
+  "cycles": {
+    "月线": {
+      "period": "月线",
+      "price": 3.33,
+      "ma5": 3.04,
+      "ma10": 3.03,
+      "ma20": 2.99,
+      "ma60": 3.13,
+      "trend": "SIDEWAYS",
+      "trend_score": 5,
+      "rsi": 72.4,
+      "macd": {
+        "dif": 0.007,
+        "dea": -0.028,
+        "hist": 0.035
+      }
+    },
+    "周线": {
+      "period": "周线",
+      "price": 3.33,
+      "ma5": 3.04,
+      "ma10": 3.03,
+      "ma20": 2.99,
+      "ma60": 3.13,
+      "trend": "SIDEWAYS",
+      "trend_score": 5,
+      "rsi": 72.4,
+      "macd": {
+        "dif": 0.01,
+        "dea": -0.023,
+        "hist": 0.033
+      }
+    },
+    "日线": {
+      "period": "日线",
+      "price": 3.33,
+      "ma5": 3.04,
+      "ma10": 3.03,
+      "ma20": 2.99,
+      "ma60": 3.13,
+      "trend": "SIDEWAYS",
+      "trend_score": 5,
+      "rsi": 72.4,
+      "macd": {
+        "dif": 0.007,
+        "dea": -0.028,
+        "hist": 0.035
+      }
+    },
+    "60分钟": {
+      "period": "60分钟",
+      "price": 3.33,
+      "ma5": 3.04,
+      "ma10": 3.03,
+      "ma20": 2.99,
+      "ma60": 3.13,
+      "trend": "SIDEWAYS",
+      "trend_score": 5,
+      "rsi": 72.4,
+      "macd": {
+        "dif": 0.007,
+        "dea": -0.028,
+        "hist": 0.035
+      }
+    },
+    "15分钟": {
+      "period": "15分钟",
+      "price": 3.33,
+      "ma5": 3.04,
+      "ma10": 3.03,
+      "ma20": 2.99,
+      "ma60": 3.13,
+      "trend": "SIDEWAYS",
+      "trend_score": 5,
+      "rsi": 72.4,
+      "macd": {
+        "dif": 0.007,
+        "dea": -0.028,
+        "hist": 0.035
+      }
+    }
+  },
+  "big_trend_score": 5.0,
+  "mid_trend_score": 5,
+  "small_trend_score": 5.0,
+  "resonance": "MIXED",
+  "direction": "周期分歧，方向不明",
+  "trade_action": "观望等待，不做方向性押注",
+  "divergence_signals": [],
+  "consistency": "看多周期0/5, 看空周期0/5"
+}

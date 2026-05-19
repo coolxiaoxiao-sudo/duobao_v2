@@ -51,7 +51,7 @@
     },
     "volume_anomaly": {
       "anomaly": "NONE",
-      "vol_ratio": 0.59,
+      "vol_ratio": 0.73,
       "signal": "量能正常",
       "confidence": 0.3
     },
@@ -62,19 +62,19 @@
   "300825.SZ": {
     "code": "300825.SZ",
     "name": "阿尔特",
-    "current_price": 12.41,
-    "entry_point": 10.03,
+    "current_price": 12.35,
+    "entry_point": 10.02,
     "entry_zone": [
-      9.83,
-      10.23
+      9.82,
+      10.22
     ],
     "take_profit_1": 20.0,
     "take_profit_2": 21.0,
     "reduce_point": 19.0,
-    "stop_loss": 10.03,
+    "stop_loss": 10.02,
     "supports": [
       {
-        "level": 10.03,
+        "level": 10.02,
         "type": "MA20支撑"
       },
       {
@@ -103,7 +103,7 @@
     },
     "volume_anomaly": {
       "anomaly": "放量",
-      "vol_ratio": 1.6,
+      "vol_ratio": 1.75,
       "signal": "资金积极",
       "confidence": 0.55,
       "risk": "关注能否持续"
@@ -116,7 +116,7 @@
   "002501.SZ": {
     "code": "002501.SZ",
     "name": "*ST利源",
-    "current_price": 1.4,
+    "current_price": 1.39,
     "entry_point": 1.16,
     "entry_zone": [
       1.14,
@@ -155,26 +155,28 @@
       }
     ],
     "resonance": {
-      "resonance": "多周期分歧",
-      "confidence": 0.5,
-      "signal": "HOLD",
-      "up_signals": 3,
-      "down_signals": 3,
+      "resonance": "偏空但未共振",
+      "confidence": 0.67,
+      "signal": "WEAK_SELL",
+      "up_signals": 2,
+      "down_signals": 4,
       "ma_status": "bearish_weak",
       "trend_score": 7.1
     },
     "volume_anomaly": {
       "anomaly": "NONE",
-      "vol_ratio": 0.49,
+      "vol_ratio": 0.52,
       "signal": "量能正常",
       "confidence": 0.3
     },
-    "signals": []
+    "signals": [
+      "偏空信号"
+    ]
   },
   "600392.SH": {
     "code": "600392.SH",
     "name": "盛和资源",
-    "current_price": 23.17,
+    "current_price": 23.22,
     "entry_point": 20.0,
     "entry_zone": [
       19.6,
@@ -204,7 +206,7 @@
         "type": "MA60强压力"
       },
       {
-        "level": 28.36,
+        "level": 28.35,
         "type": "布林上轨"
       }
     ],
@@ -219,7 +221,7 @@
     },
     "volume_anomaly": {
       "anomaly": "NONE",
-      "vol_ratio": 0.63,
+      "vol_ratio": 0.69,
       "signal": "量能正常",
       "confidence": 0.3
     },
@@ -230,14 +232,14 @@
   "002366.SZ": {
     "code": "002366.SZ",
     "name": "融发核电",
-    "current_price": 7.51,
+    "current_price": 7.56,
     "entry_point": 7.45,
     "entry_zone": [
       7.3,
       7.6
     ],
     "take_profit_1": 7.63,
-    "take_profit_2": 7.89,
+    "take_profit_2": 7.9,
     "reduce_point": 7.25,
     "stop_loss": 7.45,
     "supports": [
@@ -260,7 +262,7 @@
         "type": "MA60强压力"
       },
       {
-        "level": 7.89,
+        "level": 7.9,
         "type": "布林上轨"
       },
       {
@@ -279,7 +281,7 @@
     },
     "volume_anomaly": {
       "anomaly": "NONE",
-      "vol_ratio": 0.66,
+      "vol_ratio": 0.75,
       "signal": "量能正常",
       "confidence": 0.3
     },
@@ -290,15 +292,15 @@
   "688111.SH": {
     "code": "688111.SH",
     "name": "金山办公",
-    "current_price": 252.44,
+    "current_price": 253.88,
     "entry_point": 250.0,
     "entry_zone": [
       245.0,
       255.0
     ],
-    "take_profit_1": 255.47,
+    "take_profit_1": 255.54,
     "take_profit_2": 260.0,
-    "reduce_point": 242.7,
+    "reduce_point": 242.76,
     "stop_loss": 250.0,
     "supports": [
       {
@@ -310,13 +312,13 @@
         "type": "整数支撑"
       },
       {
-        "level": 237.87,
+        "level": 237.98,
         "type": "布林下轨"
       }
     ],
     "resistances": [
       {
-        "level": 255.47,
+        "level": 255.54,
         "type": "MA20压力"
       },
       {
@@ -324,7 +326,7 @@
         "type": "整数压力"
       },
       {
-        "level": 261.41,
+        "level": 261.43,
         "type": "MA60强压力"
       }
     ],
@@ -339,7 +341,7 @@
     },
     "volume_anomaly": {
       "anomaly": "NONE",
-      "vol_ratio": 1.03,
+      "vol_ratio": 1.25,
       "signal": "量能正常",
       "confidence": 0.3
     },
@@ -350,15 +352,15 @@
   "301638.SZ": {
     "code": "301638.SZ",
     "name": "南网数字",
-    "current_price": 30.69,
+    "current_price": 30.6,
     "entry_point": 30.0,
     "entry_zone": [
       29.4,
       30.6
     ],
-    "take_profit_1": 32.01,
+    "take_profit_1": 32.0,
     "take_profit_2": 40.0,
-    "reduce_point": 30.41,
+    "reduce_point": 30.4,
     "stop_loss": 30.0,
     "supports": [
       {
@@ -366,7 +368,7 @@
         "type": "整数支撑"
       },
       {
-        "level": 29.07,
+        "level": 29.06,
         "type": "MA20支撑"
       },
       {
@@ -376,7 +378,7 @@
     ],
     "resistances": [
       {
-        "level": 32.01,
+        "level": 32.0,
         "type": "布林上轨"
       },
       {
@@ -395,7 +397,7 @@
     },
     "volume_anomaly": {
       "anomaly": "NONE",
-      "vol_ratio": 0.93,
+      "vol_ratio": 1.0,
       "signal": "量能正常",
       "confidence": 0.3
     },
@@ -447,7 +449,7 @@
     },
     "volume_anomaly": {
       "anomaly": "巨量异动",
-      "vol_ratio": 2.61,
+      "vol_ratio": 2.62,
       "signal": "主力进出信号",
       "confidence": 0.7,
       "risk": "可能是出货/吸筹极端行为"
@@ -460,15 +462,15 @@
   "688107.SH": {
     "code": "688107.SH",
     "name": "安路科技",
-    "current_price": 45.66,
+    "current_price": 45.38,
     "entry_point": 40.0,
     "entry_zone": [
       39.2,
       40.8
     ],
-    "take_profit_1": 46.95,
+    "take_profit_1": 46.88,
     "take_profit_2": 50.0,
-    "reduce_point": 44.6,
+    "reduce_point": 44.54,
     "stop_loss": 40.0,
     "supports": [
       {
@@ -476,7 +478,7 @@
         "type": "整数支撑"
       },
       {
-        "level": 35.67,
+        "level": 35.66,
         "type": "MA20支撑"
       },
       {
@@ -486,7 +488,7 @@
     ],
     "resistances": [
       {
-        "level": 46.95,
+        "level": 46.88,
         "type": "布林上轨"
       },
       {
@@ -509,7 +511,7 @@
     },
     "volume_anomaly": {
       "anomaly": "NONE",
-      "vol_ratio": 0.75,
+      "vol_ratio": 0.89,
       "signal": "量能正常",
       "confidence": 0.3
     },
@@ -520,7 +522,7 @@
   "603259.SH": {
     "code": "603259.SH",
     "name": "药明康德",
-    "current_price": 101.39,
+    "current_price": 101.43,
     "entry_point": 100.0,
     "entry_zone": [
       98.0,
@@ -540,7 +542,7 @@
         "type": "MA60强支撑"
       },
       {
-        "level": 95.13,
+        "level": 95.14,
         "type": "布林下轨"
       }
     ],
@@ -569,7 +571,7 @@
     },
     "volume_anomaly": {
       "anomaly": "NONE",
-      "vol_ratio": 0.52,
+      "vol_ratio": 0.6,
       "signal": "量能正常",
       "confidence": 0.3
     },
@@ -580,7 +582,7 @@
   "600905.SH": {
     "code": "600905.SH",
     "name": "三峡能源",
-    "current_price": 4.19,
+    "current_price": 4.2,
     "entry_point": 4.13,
     "entry_zone": [
       4.05,
@@ -629,7 +631,7 @@
     },
     "volume_anomaly": {
       "anomaly": "NONE",
-      "vol_ratio": 0.69,
+      "vol_ratio": 0.76,
       "signal": "量能正常",
       "confidence": 0.3
     },

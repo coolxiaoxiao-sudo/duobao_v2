@@ -1,5 +1,5 @@
 ﻿"""
-多宝 v2.2 自主进化版 — 一键入口
+多宝 v2.3 自主进化版 — 一键入口
 ====================
 用法:
   python main.py              全量分析（含进化层）
@@ -17,6 +17,15 @@
   python main.py --points     买卖临界点
   python main.py --multi      多智能体协同研判
   python main.py --learn      策略研习总结
+  python main.py --cycle      跨周期联动分析
+  python main.py --capital    资金层级拆解
+  python main.py --valuation  动态估值锚定
+  python main.py --events     事件驱动推演
+  python main.py --emotion    情绪量化打分
+  python main.py --peer       同行业横向对比
+  python main.py --precision  多层精准测算
+  python main.py --scenario   多场景策略适配
+  python main.py --swan       黑天鹅防御
   python main.py --screen     多层严筛
   python main.py --drivers    驱动逻辑拆解
   python main.py --review     自动复盘
@@ -41,7 +50,7 @@ logger = get_logger("main")
 
 BANNER = """
 ╔══════════════════════════════════════╗
-║   🔮 多宝 v2.2  自主进化股票分析系统    ║
+║   🔮 多宝 v2.3  自主进化股票分析系统    ║
 ║   7层架构 · DeepSeek驱动 · SOLO调度   ║
 ╚══════════════════════════════════════╝"""
 
@@ -181,7 +190,7 @@ def main():
 
 
 def evolve_full():
-    """自主进化完整运行 — v2.2 核心"""
+    """自主进化完整运行 — v2.3 核心"""
     print(BANNER)
     print("=" * 50)
     now = datetime.now()
@@ -286,6 +295,63 @@ def evolve_full():
         print(f"  [FAIL] {e}")
 
     # Layer 7: 自动复盘
+    print("\n[Layer 7.9] 自动复盘")
+    try:
+        from layer7_evolution.trade_reviewer import generate_review_report
+        rev = generate_review_report()
+        wr = rev.get('patterns', {}).get('overall_win_rate', 0)
+        print(f"  历史胜率: {wr:.0%} | 快照数: {rev.get('snapshots_count',0)}")
+    except Exception as e:
+        print(f"  [FAIL] {e}")
+
+    # Layer 8: 跨周期联动
+    print("\n[Layer 8.1] 跨周期联动")
+    try:
+        from layer7_evolution.cross_cycle import batch_cross_cycle
+        cyc = batch_cross_cycle()
+        print(f"  多周期共振向上:{cyc.get('strong_bull',0)}只 向下:{cyc.get('strong_bear',0)}只")
+    except Exception as e:
+        print(f"  [FAIL] {e}")
+
+    # Layer 8: 资金层级拆解
+    print("\n[Layer 8.2] 资金层级拆解")
+    try:
+        from layer7_evolution.capital_flow import batch_capital_flow
+        cap = batch_capital_flow()
+        for flow, stocks in cap.get('by_flow', {}).items():
+            names = ', '.join(s['name'] for s in stocks[:3])
+            print(f"  {flow}: {names}")
+    except Exception as e:
+        print(f"  [FAIL] {e}")
+
+    # Layer 8: 动态估值
+    print("\n[Layer 8.3] 动态估值锚定")
+    try:
+        from layer7_evolution.dynamic_valuation import batch_valuation
+        val = batch_valuation()
+        print(f"  估值分布: {val.get('zones', {})}")
+    except Exception as e:
+        print(f"  [FAIL] {e}")
+
+    # Layer 8: 情绪量化
+    print("\n[Layer 8.4] 情绪量化打分")
+    try:
+        from layer7_evolution.emotion_quant import full_emotion_analysis
+        emo = full_emotion_analysis()
+        m = emo.get('market', {})
+        print(f"  大盘情绪: {m.get('stage')}({m.get('score')}) | {m.get('advice')[:30]}...")
+    except Exception as e:
+        print(f"  [FAIL] {e}")
+
+    # Layer 8: 黑天鹅防御
+    print("\n[Layer 8.5] 黑天鹅前置防御")
+    try:
+        from layer7_evolution.black_swan import black_swan_defense
+        swan = black_swan_defense()
+        print(f"  防御等级: {swan.get('overall')} | {swan.get('defense_action')}")
+    except Exception as e:
+        print(f"  [FAIL] {e}")
+
     print("\n[Layer 7.9] 自动复盘")
     try:
         from layer7_evolution.trade_reviewer import generate_review_report

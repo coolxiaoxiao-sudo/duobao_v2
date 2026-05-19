@@ -1,0 +1,95 @@
+{
+  "code": "688107.SH",
+  "name": "安路科技",
+  "date": "2026-05-19",
+  "cycles": {
+    "月线": {
+      "period": "月线",
+      "price": 45.38,
+      "ma5": 43.5,
+      "ma10": 40.51,
+      "ma20": 35.66,
+      "ma60": 32.0,
+      "trend": "BULLISH",
+      "trend_score": 8,
+      "rsi": 92.3,
+      "macd": {
+        "dif": 3.724,
+        "dea": 2.546,
+        "hist": 1.178
+      }
+    },
+    "周线": {
+      "period": "周线",
+      "price": 45.38,
+      "ma5": 43.5,
+      "ma10": 40.51,
+      "ma20": 35.66,
+      "ma60": 32.0,
+      "trend": "BULLISH",
+      "trend_score": 8,
+      "rsi": 92.3,
+      "macd": {
+        "dif": 3.76,
+        "dea": 2.598,
+        "hist": 1.162
+      }
+    },
+    "日线": {
+      "period": "日线",
+      "price": 45.38,
+      "ma5": 43.5,
+      "ma10": 40.51,
+      "ma20": 35.66,
+      "ma60": 32.0,
+      "trend": "BULLISH",
+      "trend_score": 8,
+      "rsi": 92.3,
+      "macd": {
+        "dif": 3.724,
+        "dea": 2.546,
+        "hist": 1.178
+      }
+    },
+    "60分钟": {
+      "period": "60分钟",
+      "price": 45.38,
+      "ma5": 43.5,
+      "ma10": 40.51,
+      "ma20": 35.66,
+      "ma60": 32.0,
+      "trend": "BULLISH",
+      "trend_score": 8,
+      "rsi": 92.3,
+      "macd": {
+        "dif": 3.724,
+        "dea": 2.546,
+        "hist": 1.178
+      }
+    },
+    "15分钟": {
+      "period": "15分钟",
+      "price": 45.38,
+      "ma5": 43.5,
+      "ma10": 40.51,
+      "ma20": 35.66,
+      "ma60": 32.0,
+      "trend": "BULLISH",
+      "trend_score": 8,
+      "rsi": 92.3,
+      "macd": {
+        "dif": 3.724,
+        "dea": 2.546,
+        "hist": 1.178
+      }
+    }
+  },
+  "big_trend_score": 8.0,
+  "mid_trend_score": 8,
+  "small_trend_score": 8.0,
+  "resonance": "STRONG_BULL",
+  "direction": "多周期共振向上",
+  "trade_action": "顺势做多，小周期回调即买点",
+  "divergence_signals": [],
+  "consistency": "看多周期5/5, 看空周期0/5"
+}

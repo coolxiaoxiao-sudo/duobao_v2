@@ -1,0 +1,95 @@
+{
+  "code": "300825.SZ",
+  "name": "阿尔特",
+  "date": "2026-05-19",
+  "cycles": {
+    "月线": {
+      "period": "月线",
+      "price": 12.35,
+      "ma5": 11.51,
+      "ma10": 10.9,
+      "ma20": 10.02,
+      "ma60": 9.52,
+      "trend": "BULLISH",
+      "trend_score": 8,
+      "rsi": 94.3,
+      "macd": {
+        "dif": 0.683,
+        "dea": 0.418,
+        "hist": 0.265
+      }
+    },
+    "周线": {
+      "period": "周线",
+      "price": 12.35,
+      "ma5": 11.51,
+      "ma10": 10.9,
+      "ma20": 10.02,
+      "ma60": 9.52,
+      "trend": "BULLISH",
+      "trend_score": 8,
+      "rsi": 94.3,
+      "macd": {
+        "dif": 0.697,
+        "dea": 0.44,
+        "hist": 0.258
+      }
+    },
+    "日线": {
+      "period": "日线",
+      "price": 12.35,
+      "ma5": 11.51,
+      "ma10": 10.9,
+      "ma20": 10.02,
+      "ma60": 9.52,
+      "trend": "BULLISH",
+      "trend_score": 8,
+      "rsi": 94.3,
+      "macd": {
+        "dif": 0.683,
+        "dea": 0.418,
+        "hist": 0.265
+      }
+    },
+    "60分钟": {
+      "period": "60分钟",
+      "price": 12.35,
+      "ma5": 11.51,
+      "ma10": 10.9,
+      "ma20": 10.02,
+      "ma60": 9.52,
+      "trend": "BULLISH",
+      "trend_score": 8,
+      "rsi": 94.3,
+      "macd": {
+        "dif": 0.683,
+        "dea": 0.418,
+        "hist": 0.265
+      }
+    },
+    "15分钟": {
+      "period": "15分钟",
+      "price": 12.35,
+      "ma5": 11.51,
+      "ma10": 10.9,
+      "ma20": 10.02,
+      "ma60": 9.52,
+      "trend": "BULLISH",
+      "trend_score": 8,
+      "rsi": 94.3,
+      "macd": {
+        "dif": 0.683,
+        "dea": 0.418,
+        "hist": 0.265
+      }
+    }
+  },
+  "big_trend_score": 8.0,
+  "mid_trend_score": 8,
+  "small_trend_score": 8.0,
+  "resonance": "STRONG_BULL",
+  "direction": "多周期共振向上",
+  "trade_action": "顺势做多，小周期回调即买点",
+  "divergence_signals": [],
+  "consistency": "看多周期5/5, 看空周期0/5"
+}
