@@ -1,8 +1,8 @@
 ﻿"""
-多宝 v2.0 — 一键入口
+多宝 v2.2 自主进化版 — 一键入口
 ====================
 用法:
-  python main.py              全量分析
+  python main.py              全量分析（含进化层）
   python main.py --brief      快速行情
   python main.py --audit      持仓审计
   python main.py --monitor    预警检查
@@ -11,6 +11,12 @@
   python main.py --backtest   回测评估
   python main.py --health     健康检查
   python main.py --dashboard  启动Web看板
+  python main.py --evolve     自主进化运行（全模块）
+  python main.py --risk       风控评估
+  python main.py --scan       市场扫描
+  python main.py --points     买卖临界点
+  python main.py --multi      多智能体协同研判
+  python main.py --learn      策略研习总结
 """
 import json, sys, os
 from datetime import datetime
@@ -32,7 +38,7 @@ logger = get_logger("main")
 
 BANNER = """
 ╔══════════════════════════════════════╗
-║   🔮 多宝 v2.0  股票分析系统         ║
+║   🔮 多宝 v2.2  自主进化股票分析系统    ║
 ║   7层架构 · DeepSeek驱动 · SOLO调度   ║
 ╚══════════════════════════════════════╝"""
 
@@ -150,8 +156,116 @@ def main():
     elif "--backtest" in sys.argv:
         from layer6_evolution.backtester import evaluate
         print(json.dumps(evaluate(), ensure_ascii=False, indent=2))
+    elif "--evolve" in sys.argv:
+        evolve_full()
+    elif "--risk" in sys.argv:
+        from layer7_evolution.risk_guard import full_risk_assessment
+        print(json.dumps(full_risk_assessment(), ensure_ascii=False, indent=2))
+    elif "--scan" in sys.argv:
+        from layer7_evolution.market_scanner import full_market_scan
+        print(json.dumps(full_market_scan(), ensure_ascii=False, indent=2))
+    elif "--points" in sys.argv:
+        from layer7_evolution.critical_point import batch_compute_all
+        print(json.dumps(batch_compute_all(), ensure_ascii=False, indent=2))
+    elif "--multi" in sys.argv:
+        from layer7_evolution.multi_agent import portfolio_batch_analyze
+        print(json.dumps(portfolio_batch_analyze(), ensure_ascii=False, indent=2))
+    elif "--learn" in sys.argv:
+        from layer7_evolution.strategy_learner import get_daily_learning_summary
+        print(json.dumps(get_daily_learning_summary(), ensure_ascii=False, indent=2))
     else:
         full()
+
+
+def evolve_full():
+    """自主进化完整运行 — v2.2 核心"""
+    print(BANNER)
+    print("=" * 50)
+    now = datetime.now()
+
+    # Layer 7: 市场底层逻辑扫描
+    print("\n[Layer 7.1] 市场底层逻辑扫描")
+    try:
+        from layer7_evolution.market_scanner import full_market_scan
+        scan = full_market_scan()
+        print(f"  大盘形态: {scan['market_trend']['phase']}")
+        print(f"  板块热度: {scan['sector_rotation'].get('rotation_signal','N/A')}")
+        for code, sc in scan.get('stock_scans', {}).items():
+            cyc = sc.get('cycle', {}).get('cycle', '?')
+            manip = sc.get('manipulation', {}).get('pattern', '?')
+            print(f"  {sc.get('name',code):<8} 周期:{cyc:<8} 主力:{manip}")
+    except Exception as e:
+        print(f"  [FAIL] {e}")
+
+    # Layer 7: 自适应策略引擎
+    print("\n[Layer 7.2] 自适应策略引擎")
+    try:
+        from layer7_evolution.adaptive_engine import daily_adaptation
+        adapt = daily_adaptation()
+        print(f"  市场风格: {adapt['market_style']} ({adapt['style_description'][:30]}...)")
+        print(f"  仓位参数: 最大单票{adapt['adaptive_params']['max_position_pct']:.0%}, "
+              f"现金{adapt['adaptive_params']['cash_reserve']:.0%}")
+    except Exception as e:
+        print(f"  [FAIL] {e}")
+
+    # Layer 7: 风控前置预判
+    print("\n[Layer 7.3] 风控前置预判")
+    try:
+        from layer7_evolution.risk_guard import full_risk_assessment
+        risk = full_risk_assessment()
+        print(f"  综合风险: {risk['overall']} | {risk['overall_action']}")
+        print(f"  CRITICAL:{risk['critical_count']}只 HIGH:{risk['high_count']}只")
+    except Exception as e:
+        print(f"  [FAIL] {e}")
+
+    # Layer 7: 多智能体协同研判
+    print("\n[Layer 7.4] 多智能体协同研判")
+    try:
+        from layer7_evolution.multi_agent import portfolio_batch_analyze
+        multi = portfolio_batch_analyze()
+        sig_dist = multi.get('signal_distribution', {})
+        print(f"  信号分布: {sig_dist}")
+        for code, r in multi.get('results', {}).items():
+            v = r.get('verdict', {})
+            if v:
+                print(f"  {v.get('name',code):<8} 综合{v.get('final_score',0):.1f} "
+                      f"信号:{v.get('signal','?')} 共识:{v.get('consensus','?')}")
+    except Exception as e:
+        print(f"  [FAIL] {e}")
+
+    # Layer 7: 买卖临界点
+    print("\n[Layer 7.5] 买卖临界点精算")
+    try:
+        from layer7_evolution.critical_point import batch_compute_all
+        points = batch_compute_all()
+        for code, pt in points.items():
+            if 'error' in pt: continue
+            print(f"  {pt.get('name',code):<8} 入:{pt.get('entry_point')} "
+                  f"止盈1:{pt.get('take_profit_1')} 止损:{pt.get('stop_loss')}")
+    except Exception as e:
+        print(f"  [FAIL] {e}")
+
+    # Layer 7: 策略研习
+    print("\n[Layer 7.6] 策略研习")
+    try:
+        from layer7_evolution.strategy_learner import get_daily_learning_summary
+        learn = get_daily_learning_summary()
+        print(f"  可用策略: {learn['total_strategies']}个")
+        for s in learn.get('recommended_strategies', [])[:3]:
+            print(f"  推荐: {s['name']} ({s['type']}) 胜率{s['win_rate_expected']:.0%}")
+    except Exception as e:
+        print(f"  [FAIL] {e}")
+
+    # 运行传统 full 分析
+    print("\n" + "=" * 50)
+    print("  进化层完成，运行传统六层分析...")
+    print("=" * 50)
+    full()
+
+    elapsed = (datetime.now() - now).total_seconds()
+    print(f"\n{'═' * 50}")
+    print(f"  🧬 自主进化分析完成 · 总耗时 {elapsed:.0f}s")
+    print(f"{'═' * 50}")
 
 if __name__ == "__main__":
     main()
