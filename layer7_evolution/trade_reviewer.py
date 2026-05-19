@@ -1,11 +1,12 @@
-"""自动复盘引擎 — 历史交易自动验证 + 模型淘汰 + 高胜率固化
+﻿"""自动复盘引擎 — 历史交易自动验证 + 模型淘汰 + 高胜率固化
 
 核心流程：
 1. 每日自动对比历史评分 vs 实际价格变化
 2. 统计各策略/因子/信号的历史胜率
 3. 识别高胜率模式 → 固化为交易模型
 4. 识别低效模式 → 标记淘汰
-5. 输出复盘报告 + 进化建议
+5. 每日自查 — 主动回顾研判偏差与决策失误
+6. 输出复盘报告 + 进化建议
 """
 from __future__ import annotations
 
@@ -23,6 +24,9 @@ logger = get_logger("trade_reviewer")
 
 REVIEW_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "review")
 os.makedirs(REVIEW_DIR, exist_ok=True)
+
+SELFCHECK_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "selfcheck")
+os.makedirs(SELFCHECK_DIR, exist_ok=True)
 
 
 def load_snapshots() -> list:
@@ -43,6 +47,94 @@ def load_snapshots() -> list:
         except:
             pass
     return snapshots
+
+
+def self_check() -> dict:
+    """每日自查复盘 — 主动回顾研判偏差与决策失误，自主修正交易思路"""
+    now = datetime.now()
+    checklist = {
+        "date": now.strftime("%Y-%m-%d"),
+        "大盘判断": {},
+        "个股判断": {},
+        "持仓评估": {},
+        "决策复盘": {},
+        "改进方向": [],
+    }
+    
+    try:
+        # 1. 大盘判断自查
+        from layer1_data.tencent_api import get_indices
+        indices = get_indices()
+        checklist["大盘判断"] = {
+            "数据": {k: f"{v.get('pct_chg',0):+.2f}%" for k,v in indices.items()},
+            "检查项": [
+                "是否准确判断大盘整体走势？",
+                "是否识别市场情绪？（低迷/亢奋/正常）",
+                "是否给出仓位调整建议？"
+            ]
+        }
+        
+        # 2. 个股判断自查
+        for s in config.stocks:
+            code = s["code"]
+            try:
+                from layer3_analysis.technical import compute
+                from layer3_analysis.trend import compute_all as trend_compute
+                tech = compute(code)
+                tr = trend_compute(code, 60)
+                
+                checklist["个股判断"][s["name"]] = {
+                    "六因子": tech.get("total", "N/A"),
+                    "信号": tech.get("signal", "N/A"),
+                    "趋势": tr.get("trend_total", "N/A"),
+                    "检查项": [
+                        f"短期/中期/长期三层趋势是否清晰划分？",
+                        f"盈亏比是否优先评估？（成本{s['cost']}止损{s['stop']}目标{s['target']}）",
+                        f"是否存在追高风险？",
+                        f"是否存在频繁交易冲动？"
+                    ]
+                }
+            except: pass
+        
+        # 3. 持仓评估
+        total_stocks = len(config.stocks)
+        checklist["持仓评估"] = {
+            "持仓数量": total_stocks,
+            "检查项": [
+                "当前仓位是否合理？（严禁满仓，上限50%）",
+                "是否有需要减仓的弱势标的？",
+                "是否有需要止损的破位标的？"
+            ]
+        }
+        
+        # 4. 决策复盘
+        checklist["决策复盘"] = {
+            "检查项": [
+                "今日是否有追高操作？如有→记录并警示",
+                "今日是否有止损不执行？如有→记录并反思",
+                "今日是否有计划外交易？如有→立即修正",
+                "今日判断与市场实际走向偏差？→分析原因",
+            ]
+        }
+        
+        # 5. 改进方向
+        checklist["改进方向"] = [
+            "持续提升三层趋势判断精准度",
+            "严格盈亏比优先原则，无优质机会直接观望",
+            "坚决杜绝随意频繁交易",
+            "优化盘口实战研判，缩小买卖点位误差",
+        ]
+        
+        # 保存自查报告
+        with open(os.path.join(SELFCHECK_DIR, f"selfcheck_{now.strftime('%Y%m%d')}.json"), "w", encoding="utf-8") as f:
+            json.dump(checklist, f, ensure_ascii=False, indent=2)
+        
+        checklist["status"] = "自查完成"
+        
+    except Exception as e:
+        checklist["status"] = f"部分失败: {e}"
+    
+    return checklist
 
 
 def verify_signals(snapshots: list, horizon_days: int = 5) -> list:
@@ -73,7 +165,6 @@ def verify_signals(snapshots: list, horizon_days: int = 5) -> list:
             total = old_data.get("total", 5)
             audit_action = old_data.get("audit_action", "HOLD")
 
-            # 判断正确性
             if signal in ("BUY", "WATCH") and actual_return > 0:
                 correct = True
             elif signal == "AVOID" and actual_return < 0:
@@ -104,7 +195,6 @@ def analyze_factor_performance(results: list) -> dict:
     """分析各因子表现"""
     from collections import defaultdict
 
-    # 按信号类型分析
     by_signal = defaultdict(list)
     for r in results:
         by_signal[r["signal"]].append(r)
@@ -121,7 +211,6 @@ def analyze_factor_performance(results: list) -> dict:
             "avg_return": round(avg_ret, 2),
         }
 
-    # 按评分区间分析
     by_score_range = defaultdict(list)
     for r in results:
         score = r.get("score", 5)
@@ -153,16 +242,13 @@ def identify_patterns(results: list) -> dict:
     if not results:
         return {}
 
-    # 找出最佳和最差预测
     sorted_by_return = sorted(results, key=lambda x: x["actual_return"], reverse=True)
     top_wins = sorted_by_return[:5]
     top_losses = sorted_by_return[-5:]
 
-    # 高胜率模式
     wins = [r for r in results if r["correct"]]
     losses = [r for r in results if not r["correct"]]
 
-    # 信号+评分组合分析
     combo_stats = {}
     for r in results:
         key = f"{r['signal']}_{r['audit_action']}"
@@ -177,7 +263,6 @@ def identify_patterns(results: list) -> dict:
         v["win_rate"] = round(v["correct"] / v["total"], 3) if v["total"] > 0 else 0
         v["avg_return"] = round(np.mean(v["returns"]), 2) if v["returns"] else 0
 
-    # 排序找最佳/最差组合
     ranked = sorted(combo_stats.items(), key=lambda x: x[1]["win_rate"], reverse=True)
     best_combo = ranked[0] if ranked else None
     worst_combo = ranked[-1] if ranked else None
@@ -201,6 +286,9 @@ def generate_review_report() -> dict:
     results = verify_signals(snapshots)
     factor_perf = analyze_factor_performance(results)
     patterns = identify_patterns(results)
+    
+    # 每日自查
+    sc = self_check()
 
     report = {
         "date": datetime.now().strftime("%Y-%m-%d"),
@@ -208,9 +296,9 @@ def generate_review_report() -> dict:
         "verifications_count": len(results),
         "factor_performance": factor_perf,
         "patterns": patterns,
+        "self_check": sc,
     }
 
-    # 进化建议
     suggestions = []
     if patterns.get("overall_win_rate", 0) < 0.5:
         suggestions.append("整体胜率低于50%，建议重新审视因子权重")
@@ -227,7 +315,6 @@ def generate_review_report() -> dict:
 
     report["suggestions"] = suggestions
 
-    # 保存
     f = os.path.join(REVIEW_DIR, f"review_{datetime.now().strftime('%Y%m%d')}.json")
     with open(f, "w", encoding="utf-8") as fh:
         json.dump(report, fh, ensure_ascii=False, indent=2)

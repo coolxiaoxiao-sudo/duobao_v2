@@ -5,11 +5,14 @@
 2. 强弱分化对比交易法 — 只做强不做弱，强者恒强
 3. 波段高低切换逻辑 — 主升持有，见顶离场
 4. 稳健复利核心宗旨 — 高胜率、合理盈亏比、严控回撤
+5. 追高检测 — 严禁盲目追高连续拉升个股，远离无业绩炒作
+6. 盈亏比优先筛选 — 交易决策先看盈亏比，再看胜率
 """
 from __future__ import annotations
 import json, os
 from datetime import datetime
 from typing import Dict, List
+import numpy as np
 from core.config import config
 from core.database import db
 
@@ -45,6 +48,108 @@ def detect_trading_mode(code):
         return {"mode":best[0],"confidence":best[1],"config":TRADING_MODES[best[0]],"warning":"严禁混用" if len(modes)>1 else None}
     except Exception as e:
         return {"error":str(e),"mode":"未知"}
+
+def chase_risk_check(code, name):
+    """追高风险检测 — 严禁盲目追高连续大幅拉升个股，远离无业绩炒作"""
+    risks = []
+    try:
+        from layer1_data.tencent_api import get_quote
+        from layer3_analysis.technical import compute
+        
+        q = get_quote(code)
+        tech = compute(code)
+        pe = q.get("pe", 0) or 0
+        rsi = tech.get("rsi14", 50)
+        
+        rows = db.query("SELECT close,vol FROM stock_daily WHERE ts_code=? ORDER BY trade_date DESC LIMIT 60", (code,))
+        if len(rows) < 10:
+            return {"code":code,"name":name,"risks":[],"pass":True,"action":"数据不足，暂不判断"}
+        
+        closes = [r["close"] for r in rows]
+        vols = [r["vol"] for r in rows]
+        
+        # 1. 连续大幅拉升检测（近10日涨幅>30%）
+        if len(closes) >= 10:
+            chg_10d = (closes[0] / closes[9] - 1) * 100 if closes[9] > 0 else 0
+            if chg_10d > 30:
+                risks.append(f"连续拉升: 10日涨幅{chg_10d:.0f}%")
+            elif chg_10d > 20:
+                risks.append(f"短期急涨: 10日涨幅{chg_10d:.0f}%")
+        
+        # 2. 高位RSI过热
+        if rsi > 75:
+            risks.append(f"RSI过热: {rsi:.0f}")
+        elif rsi > 70:
+            risks.append(f"RSI偏热: {rsi:.0f}")
+        
+        # 3. 无业绩支撑炒作
+        if pe < 0:
+            risks.append("业绩亏损，纯情绪炒作风险")
+        elif pe > 200:
+            risks.append(f"PE={pe:.0f}极高估值，透支严重")
+        
+        # 4. 放天量（可能出货）
+        if len(vols) >= 20:
+            avg_vol = np.mean(vols[1:20])
+            if vols[0] > avg_vol * 3:
+                risks.append("放天量: 可能主力出货")
+        
+        # 5. 涨速过快（3日内涨幅>15%）
+        if len(closes) >= 3:
+            chg_3d = (closes[0] / closes[2] - 1) * 100 if closes[2] > 0 else 0
+            if chg_3d > 15:
+                risks.append(f"急拉: 3日涨幅{chg_3d:.0f}%")
+        
+        pass_check = len(risks) == 0
+        if len(risks) >= 3:
+            action = "严禁追入，坚决放弃"
+        elif len(risks) >= 1:
+            action = "不满足低吸条件，观望"
+        else:
+            action = "未追高，可低吸布局"
+        
+        return {
+            "code":code,"name":name,
+            "risks":risks,"count":len(risks),
+            "pass":pass_check,"action":action
+        }
+    except Exception as e:
+        return {"error":str(e),"pass":False}
+
+def risk_reward_filter(code, name, entry_price, stop_loss, target_price):
+    """盈亏比优先筛选 — 先看盈亏比，再看胜率。无优质性价比直接观望"""
+    if entry_price <= 0 or stop_loss <= 0 or target_price <= 0:
+        return {"pass":False,"reason":"参数无效"}
+    
+    risk = abs(entry_price - stop_loss)
+    reward = abs(target_price - entry_price)
+    
+    if risk == 0:
+        return {"pass":False,"reason":"止损价等于入场价"}
+    
+    rr_ratio = reward / risk
+    risk_pct = (risk / entry_price) * 100
+    reward_pct = (reward / entry_price) * 100
+    
+    if rr_ratio >= 3:
+        level, action = "A", "极品盈亏比，优先参与"
+    elif rr_ratio >= 2:
+        level, action = "B", "优质盈亏比，可参与"
+    elif rr_ratio >= 1.5:
+        level, action = "C", "盈亏比一般，谨慎参与"
+    elif rr_ratio >= 1:
+        level, action = "D", "盈亏比不足，轻仓试探"
+    else:
+        level, action = "F", "盈亏比<1，严禁参与"
+    
+    return {
+        "code":code,"name":name,
+        "entry":entry_price,"stop":stop_loss,"target":target_price,
+        "risk_pct":round(risk_pct,1),"reward_pct":round(reward_pct,1),
+        "rr_ratio":round(rr_ratio,1),
+        "pass":rr_ratio >= 1.5,
+        "level":level,"action":action
+    }
 
 def expectation_gap_analysis(code, name, industry):
     try:
@@ -152,6 +257,17 @@ def enforce_plan(plan):
 def batch_check():
     results = {}
     for s in config.stocks:
-        results[s["code"]] = {"name":s["name"],"mode":detect_trading_mode(s["code"]),"falsify":falsification_analysis(s["code"],s["name"])}
+        code = s["code"]
+        chase = chase_risk_check(code, s["name"])
+        rr = risk_reward_filter(code, s["name"], s["cost"], s["stop"], s["target"])
+        results[code] = {
+            "name":s["name"],
+            "mode":detect_trading_mode(code),
+            "chase_risk":chase,
+            "risk_reward":rr,
+            "falsify":falsification_analysis(code, s["name"]),
+            "expectation_gap":expectation_gap_analysis(code, s["name"], s.get("industry","")),
+            "band":band_switch_logic(code),
+        }
     results["_strength_rank"] = strength_comparison(config.stocks)
     return results

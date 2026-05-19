@@ -1,9 +1,10 @@
-﻿"""高危雷区排雷 — 六大雷区+量能结构+联动验证
+﻿"""高危雷区排雷 — 六大雷区+量能结构+联动验证+系统性风险
 
 最终收官定版功能：
 1. 六大高危雷区检测 — 远离风险源头
 2. 四大量能结构识别 — 量价关系验证
 3. 大盘-板块-个股联动验证 — 环境一致性
+4. 系统性风险预警 — 大盘走弱第一时间避险
 """
 from __future__ import annotations
 import json, os
@@ -25,7 +26,7 @@ def check_six_dangers(code, name):
         closes = [r["close"] for r in rows][::-1]
         highs = [r["high"] for r in rows][::-1]
         vols = [r["vol"] for r in rows][::-1]
-        recent_high, recent_low = max(highs[-20:]), min([r["low"] for r in rows][-20:])
+        recent_high = max(highs[-20:])
         
         # 1. 高位筹码松动
         if closes[-1] > recent_high * 0.95 and np.mean(vols[-5:]) > np.mean(vols[-20:]) * 1.5:
@@ -69,16 +70,12 @@ def analyze_volume_structure(code):
         recent_vol = np.mean(vols[-5:])
         price_change = (closes[-1] / closes[0] - 1) * 100 if closes[0] > 0 else 0
         
-        # 缩量企稳
         if recent_vol < vol_avg * 0.7 and abs(price_change) < 3:
             return {"structure":"缩量企稳","signal":"底部信号，等待放量确认","reliability":"中"}
-        # 放量突破
         if recent_vol > vol_avg * 1.5 and price_change > 5:
             return {"structure":"放量突破","signal":"有效突破，可跟进","reliability":"高"}
-        # 放量滞涨
         if recent_vol > vol_avg * 1.5 and abs(price_change) < 2:
             return {"structure":"放量滞涨","signal":"顶部信号，警惕出货","reliability":"高"}
-        # 缩量阴跌
         if recent_vol < vol_avg * 0.8 and price_change < -5:
             return {"structure":"缩量阴跌","signal":"无人承接，继续探底","reliability":"高"}
         return {"structure":"正常波动","signal":"无明显结构","reliability":"低"}
@@ -108,6 +105,75 @@ def linkage_validation(code, industry):
     except Exception as e:
         return {"error":str(e)}
 
+def systemic_risk_check():
+    """系统性风险预警 — 大盘走弱第一时间避险提示"""
+    risks = []
+    try:
+        from layer1_data.tencent_api import get_indices
+        indices = get_indices()
+        
+        sh = indices.get("上证指数", {})
+        sz = indices.get("深证成指", {})
+        cy = indices.get("创业板指", {})
+        
+        sh_pct = sh.get("pct_chg", 0) or 0
+        sz_pct = sz.get("pct_chg", 0) or 0
+        cy_pct = cy.get("pct_chg", 0) or 0
+        
+        # 1. 三大指数共振下跌
+        if sh_pct < -1 and sz_pct < -1 and cy_pct < -1:
+            risks.append("三大指数共振大跌")
+        elif sh_pct < 0 and sz_pct < 0 and cy_pct < 0:
+            risks.append("三大指数同步走弱")
+        
+        # 2. 单日大跌预警
+        if sh_pct < -3:
+            risks.append(f"沪指暴跌{sh_pct:.1f}%")
+        if cy_pct < -4:
+            risks.append(f"创业板暴跌{cy_pct:.1f}%")
+        
+        # 3. 连续下跌（从数据库获取）
+        try:
+            # 用持仓中任意一只票的行情数据反推大盘趋势
+            rows = db.query("SELECT close FROM stock_daily WHERE ts_code=(SELECT ts_code FROM stock_daily LIMIT 1) ORDER BY trade_date DESC LIMIT 5")
+            if len(rows) >= 5:
+                closes = [r["close"] for r in rows]
+                down_days = sum(1 for i in range(len(closes)-1) if closes[i] < closes[i+1])
+                if down_days >= 4:
+                    risks.append(f"大盘连跌{days}天")
+        except: pass
+        
+        # 4. 情绪低迷判断
+        if abs(sh_pct) < 0.3 and abs(sz_pct) < 0.3:
+            risks.append("市场情绪低迷，交投清淡")
+        
+        # 避险决策
+        if len(risks) >= 3:
+            level = "一级预警"
+            action = "系统性风险高，立即降仓至30%以下，或空仓休息"
+            signal = "REDUCE"
+        elif len(risks) >= 2:
+            level = "二级预警"
+            action = "市场走弱，主动降仓减仓，控制回撤"
+            signal = "CAUTION"
+        elif len(risks) >= 1:
+            level = "三级关注"
+            action = "市场偏弱，提高警惕，减少新开仓"
+            signal = "WATCH"
+        else:
+            level = "安全"
+            action = "市场环境正常，正常交易"
+            signal = "OK"
+        
+        return {
+            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M"),
+            "indices": {"上证": sh_pct, "深证": sz_pct, "创业板": cy_pct},
+            "risks": risks, "count": len(risks),
+            "level": level, "action": action, "signal": signal
+        }
+    except Exception as e:
+        return {"error": str(e)}
+
 def full_danger_check(code, name, industry):
     """完整雷区检查"""
     return {
@@ -122,6 +188,9 @@ def batch_danger_check():
     results = {}
     for s in config.stocks:
         results[s["code"]] = full_danger_check(s["code"],s["name"],s.get("industry",""))
+    
+    # 追加系统性风险
+    results["_systemic"] = systemic_risk_check()
     
     with open(os.path.join(DANGER_DIR,"danger_"+datetime.now().strftime("%Y%m%d")+".json"),"w",encoding="utf-8") as f:
         json.dump(results,f,ensure_ascii=False,indent=2)
