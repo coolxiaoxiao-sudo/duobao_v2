@@ -1,4 +1,4 @@
-﻿"""
+"""
 多宝 v2.5 最终收官定版 — 一键入口
 ====================
 最终定版功能（含全部实战准则）：
@@ -248,6 +248,18 @@ def final_analysis():
 10. **精简输出**: 舍去冗余理论，全部贴合实战落地执行
 """
     
+    # 17. 数据累积
+    print()
+    print("[17/17] 数据累积 — 写入数据库归档")
+    try:
+        from layer7_evolution.data_accumulator import full_accumulate
+        acc = full_accumulate(sc, au, sd)
+        print("  signal_history:+{} analysis_tracker:+{} daily_forecast:+{}".format(acc["signals"], acc["analysis"], acc["forecast"]))
+        if acc.get("verified"):
+            print("  回溯校验历史预测: {} 条".format(acc["verified"]))
+    except Exception as e:
+        print(f"  [SKIP] {e}")
+    
     save_daily(report)
     if au: save_audit(au)
     print("  报告已写入Obsidian")
@@ -301,3 +313,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
