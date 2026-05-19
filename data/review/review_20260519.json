@@ -7,53 +7,53 @@
       "WATCH": {
         "count": 3,
         "win_rate": 0.0,
-        "avg_return": -3.51
+        "avg_return": -3.37
       },
       "BUY": {
         "count": 7,
-        "win_rate": 0.714,
-        "avg_return": 0.44
+        "win_rate": 0.857,
+        "avg_return": 0.99
       },
       "HOLD": {
         "count": 9,
         "win_rate": 0.667,
-        "avg_return": 2.4
+        "avg_return": 3.21
       },
       "AVOID": {
         "count": 3,
         "win_rate": 0.333,
-        "avg_return": 0.79
+        "avg_return": 1.16
       }
     },
     "by_score_range": {
       "中分(4-5.5)": {
         "count": 9,
         "win_rate": 0.556,
-        "avg_return": -0.6
+        "avg_return": -0.51
       },
       "低分(<4)": {
         "count": 12,
         "win_rate": 0.583,
-        "avg_return": 2.0
+        "avg_return": 2.7
       },
       "高分(>=5.5)": {
         "count": 1,
-        "win_rate": 0.0,
-        "avg_return": -2.11
+        "win_rate": 1.0,
+        "avg_return": 1.41
       }
     }
   },
   "patterns": {
     "top_wins": [
       {
+        "name": "阿尔特",
+        "signal": "HOLD",
+        "return": 11.54
+      },
+      {
         "name": "吉视传媒",
         "signal": "HOLD",
         "return": 9.9
-      },
-      {
-        "name": "阿尔特",
-        "signal": "HOLD",
-        "return": 4.75
       },
       {
         "name": "阿尔特",
@@ -66,21 +66,21 @@
         "return": 4.12
       },
       {
-        "name": "南网数字",
-        "signal": "HOLD",
-        "return": 2.96
+        "name": "安路科技",
+        "signal": "AVOID",
+        "return": 3.1
       }
     ],
     "top_losses": [
       {
-        "name": "*ST利源",
-        "signal": "BUY",
-        "return": -2.11
+        "name": "药明康德",
+        "signal": "HOLD",
+        "return": -1.05
       },
       {
         "name": "慧博云通",
         "signal": "HOLD",
-        "return": -2.48
+        "return": -2.58
       },
       {
         "name": "*ST利源",
@@ -90,7 +90,7 @@
       {
         "name": "盛和资源",
         "signal": "WATCH",
-        "return": -3.45
+        "return": -3.04
       },
       {
         "name": "盛和资源",
@@ -99,15 +99,19 @@
       }
     ],
     "best_combo": [
-      "BUY_REDUCE",
+      "BUY_HOLD",
       {
-        "correct": 1,
-        "total": 1,
+        "correct": 5,
+        "total": 5,
         "returns": [
-          -0.92
+          0.73,
+          4.12,
+          1.41,
+          0.4,
+          1.45
         ],
         "win_rate": 1.0,
-        "avg_return": -0.92
+        "avg_return": 1.62
       }
     ],
     "worst_combo": [
@@ -116,18 +120,18 @@
         "correct": 0,
         "total": 1,
         "returns": [
-          -0.61
+          -0.25
         ],
         "win_rate": 0.0,
-        "avg_return": -0.61
+        "avg_return": -0.25
       }
     ],
-    "total_correct": 12,
-    "total_wrong": 10,
-    "overall_win_rate": 0.545
+    "total_correct": 13,
+    "total_wrong": 9,
+    "overall_win_rate": 0.591
   },
   "suggestions": [
     "组合'BUY_ADD'胜率仅0%，建议淘汰或优化",
-    "组合'BUY_REDUCE'胜率达100%，建议固化加仓"
+    "组合'BUY_HOLD'胜率达100%，建议固化加仓"
   ]
 }

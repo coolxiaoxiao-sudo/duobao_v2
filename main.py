@@ -26,6 +26,9 @@
   python main.py --precision  多层精准测算
   python main.py --scenario   多场景策略适配
   python main.py --swan       黑天鹅防御
+  python main.py --discipline 交易纪律检查
+  python main.py --danger     高危雷区排雷
+  python main.py --filter     信号过滤降噪
   python main.py --screen     多层严筛
   python main.py --drivers    驱动逻辑拆解
   python main.py --review     自动复盘

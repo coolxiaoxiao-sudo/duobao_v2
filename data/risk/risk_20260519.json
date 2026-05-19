@@ -21,7 +21,7 @@
         "warning": "汽车板块风险可控"
       },
       "有色金属": {
-        "avg_risk": 5.5,
+        "avg_risk": 4.0,
         "stock_count": 2,
         "warning": "有色金属板块需关注"
       },
@@ -51,13 +51,13 @@
         "warning": "电力板块风险可控"
       }
     },
-    "highest_risk_sector": "有色金属"
+    "highest_risk_sector": "电力设备"
   },
   "individual_risks": {
     "301316.SZ": {
       "code": "301316.SZ",
       "name": "慧博云通",
-      "price": 56.62,
+      "price": 56.56,
       "risk_level": "LOW",
       "risk_score": 1,
       "risks": [
@@ -72,13 +72,13 @@
     "300825.SZ": {
       "code": "300825.SZ",
       "name": "阿尔特",
-      "price": 12.35,
+      "price": 13.15,
       "risk_level": "MEDIUM",
       "risk_score": 3,
       "risks": [
         {
           "type": "极端超买",
-          "detail": "RSI=94.3",
+          "detail": "RSI=95.2",
           "severity": "HIGH"
         }
       ],
@@ -87,27 +87,22 @@
     "002501.SZ": {
       "code": "002501.SZ",
       "name": "*ST利源",
-      "price": 1.39,
-      "risk_level": "CRITICAL",
-      "risk_score": 8,
+      "price": 1.44,
+      "risk_level": "HIGH",
+      "risk_score": 5,
       "risks": [
         {
-          "type": "连跌风险",
-          "detail": "连跌4天",
-          "severity": "HIGH"
-        },
-        {
           "type": "止损逼近",
-          "detail": "仅距-40.6%",
+          "detail": "仅距-38.5%",
           "severity": "CRITICAL"
         }
       ],
-      "action_plan": "立即评估是否减仓/清仓。主因: 止损逼近"
+      "action_plan": "减仓至半仓以下，设严格止损，不补仓"
     },
     "600392.SH": {
       "code": "600392.SH",
       "name": "盛和资源",
-      "price": 23.22,
+      "price": 23.32,
       "risk_level": "MEDIUM",
       "risk_score": 3,
       "risks": [
@@ -137,13 +132,13 @@
     "688111.SH": {
       "code": "688111.SH",
       "name": "金山办公",
-      "price": 253.88,
+      "price": 255.29,
       "risk_level": "HIGH",
       "risk_score": 5,
       "risks": [
         {
           "type": "止损逼近",
-          "detail": "仅距-36.0%",
+          "detail": "仅距-35.7%",
           "severity": "CRITICAL"
         }
       ],
@@ -152,7 +147,7 @@
     "301638.SZ": {
       "code": "301638.SZ",
       "name": "南网数字",
-      "price": 30.6,
+      "price": 30.61,
       "risk_level": "LOW",
       "risk_score": 0,
       "risks": [],
@@ -176,13 +171,13 @@
     "688107.SH": {
       "code": "688107.SH",
       "name": "安路科技",
-      "price": 45.38,
+      "price": 45.88,
       "risk_level": "MEDIUM",
       "risk_score": 3,
       "risks": [
         {
           "type": "极端超买",
-          "detail": "RSI=92.3",
+          "detail": "RSI=92.5",
           "severity": "HIGH"
         }
       ],
@@ -191,7 +186,7 @@
     "603259.SH": {
       "code": "603259.SH",
       "name": "药明康德",
-      "price": 101.43,
+      "price": 101.79,
       "risk_level": "LOW",
       "risk_score": 1,
       "risks": [
@@ -213,6 +208,6 @@
       "action_plan": "正常持有，按计划操作"
     }
   },
-  "critical_count": 1,
-  "high_count": 3
+  "critical_count": 0,
+  "high_count": 4
 }

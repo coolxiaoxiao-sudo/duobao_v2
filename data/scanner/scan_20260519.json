@@ -75,16 +75,16 @@
         ],
         "risk_warning": "可持有，设移动止盈",
         "trend_score": 10.9,
-        "rsi": 71.6,
-        "vol_ratio": 0.73
+        "rsi": 71.3,
+        "vol_ratio": 0.83
       },
       "manipulation": {
         "pattern": "无明显异常操纵痕迹",
         "confidence": 0.3,
         "trap_warning": "无明显陷阱",
-        "rsi": 71.6,
-        "vol_ratio": 0.73,
-        "atr_pct": 6.47
+        "rsi": 71.3,
+        "vol_ratio": 0.83,
+        "atr_pct": 6.48
       }
     },
     "300825.SZ": {
@@ -100,16 +100,16 @@
         ],
         "risk_warning": "高位追高风险，注意主力出货",
         "trend_score": 11.2,
-        "rsi": 94.3,
-        "vol_ratio": 1.75
+        "rsi": 95.2,
+        "vol_ratio": 2.38
       },
       "manipulation": {
         "pattern": "放量拉升 → 主力/游资推动",
         "confidence": 0.55,
-        "trap_warning": "无明显陷阱",
-        "rsi": 94.3,
-        "vol_ratio": 1.75,
-        "atr_pct": 4.5
+        "trap_warning": "谨防诱多",
+        "rsi": 95.2,
+        "vol_ratio": 2.38,
+        "atr_pct": 4.64
       }
     },
     "002501.SZ": {
@@ -125,16 +125,16 @@
         ],
         "risk_warning": "反弹减仓，不追",
         "trend_score": 7.1,
-        "rsi": 27.8,
-        "vol_ratio": 0.52
+        "rsi": 31.0,
+        "vol_ratio": 0.68
       },
       "manipulation": {
         "pattern": "无明显异常操纵痕迹",
         "confidence": 0.3,
         "trap_warning": "无明显陷阱",
-        "rsi": 27.8,
-        "vol_ratio": 0.52,
-        "atr_pct": 6.12
+        "rsi": 31.0,
+        "vol_ratio": 0.68,
+        "atr_pct": 6.0
       }
     },
     "600392.SH": {
@@ -148,16 +148,16 @@
         ],
         "risk_warning": "观望等待方向选择",
         "trend_score": 5.7,
-        "rsi": 42.3,
-        "vol_ratio": 0.69
+        "rsi": 42.7,
+        "vol_ratio": 0.78
       },
       "manipulation": {
         "pattern": "无明显异常操纵痕迹",
         "confidence": 0.3,
         "trap_warning": "无明显陷阱",
-        "rsi": 42.3,
-        "vol_ratio": 0.69,
-        "atr_pct": 5.33
+        "rsi": 42.7,
+        "vol_ratio": 0.78,
+        "atr_pct": 5.31
       }
     },
     "002366.SZ": {
@@ -173,14 +173,14 @@
         "risk_warning": "可持有，设移动止盈",
         "trend_score": 9.5,
         "rsi": 69.4,
-        "vol_ratio": 0.75
+        "vol_ratio": 0.84
       },
       "manipulation": {
         "pattern": "无明显异常操纵痕迹",
         "confidence": 0.3,
         "trap_warning": "无明显陷阱",
         "rsi": 69.4,
-        "vol_ratio": 0.75,
+        "vol_ratio": 0.84,
         "atr_pct": 2.95
       }
     },
@@ -195,16 +195,16 @@
         ],
         "risk_warning": "观望等待方向选择",
         "trend_score": 7.8,
-        "rsi": 53.4,
-        "vol_ratio": 1.25
+        "rsi": 54.3,
+        "vol_ratio": 1.42
       },
       "manipulation": {
         "pattern": "无明显异常操纵痕迹",
         "confidence": 0.3,
         "trap_warning": "无明显陷阱",
-        "rsi": 53.4,
-        "vol_ratio": 1.25,
-        "atr_pct": 3.73
+        "rsi": 54.3,
+        "vol_ratio": 1.42,
+        "atr_pct": 3.71
       }
     },
     "301638.SZ": {
@@ -220,14 +220,14 @@
         "risk_warning": "可持有，设移动止盈",
         "trend_score": 11.4,
         "rsi": 63.2,
-        "vol_ratio": 1.0
+        "vol_ratio": 1.14
       },
       "manipulation": {
         "pattern": "无明显异常操纵痕迹",
         "confidence": 0.3,
         "trap_warning": "无明显陷阱",
         "rsi": 63.2,
-        "vol_ratio": 1.0,
+        "vol_ratio": 1.14,
         "atr_pct": 5.56
       }
     },
@@ -245,14 +245,14 @@
         "risk_warning": "高位追高风险，注意主力出货",
         "trend_score": 10.8,
         "rsi": 72.4,
-        "vol_ratio": 2.62
+        "vol_ratio": 2.64
       },
       "manipulation": {
         "pattern": "放量拉升 → 主力/游资推动",
         "confidence": 0.55,
         "trap_warning": "谨防诱多",
         "rsi": 72.4,
-        "vol_ratio": 2.62,
+        "vol_ratio": 2.64,
         "atr_pct": 3.58
       }
     },
@@ -268,16 +268,16 @@
         ],
         "risk_warning": "可持有，设移动止盈",
         "trend_score": 10.0,
-        "rsi": 92.3,
-        "vol_ratio": 0.89
+        "rsi": 92.5,
+        "vol_ratio": 1.02
       },
       "manipulation": {
         "pattern": "无明显异常操纵痕迹",
         "confidence": 0.3,
         "trap_warning": "无明显陷阱",
-        "rsi": 92.3,
-        "vol_ratio": 0.89,
-        "atr_pct": 6.02
+        "rsi": 92.5,
+        "vol_ratio": 1.02,
+        "atr_pct": 6.0
       }
     },
     "603259.SH": {
@@ -291,16 +291,16 @@
         ],
         "risk_warning": "观望等待方向选择",
         "trend_score": 7.3,
-        "rsi": 52.1,
-        "vol_ratio": 0.6
+        "rsi": 52.7,
+        "vol_ratio": 0.69
       },
       "manipulation": {
         "pattern": "无明显异常操纵痕迹",
         "confidence": 0.3,
         "trap_warning": "无明显陷阱",
-        "rsi": 52.1,
-        "vol_ratio": 0.6,
-        "atr_pct": 4.2
+        "rsi": 52.7,
+        "vol_ratio": 0.69,
+        "atr_pct": 4.18
       }
     },
     "600905.SH": {
@@ -316,14 +316,14 @@
         "risk_warning": "可持有，设移动止盈",
         "trend_score": 10.2,
         "rsi": 55.3,
-        "vol_ratio": 0.76
+        "vol_ratio": 0.88
       },
       "manipulation": {
         "pattern": "无明显异常操纵痕迹",
         "confidence": 0.3,
         "trap_warning": "无明显陷阱",
         "rsi": 55.3,
-        "vol_ratio": 0.76,
+        "vol_ratio": 0.88,
         "atr_pct": 1.48
       }
     }

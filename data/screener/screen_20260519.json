@@ -127,7 +127,7 @@
         {
           "layer": "L3高位透支",
           "pass": true,
-          "reason": "距MA60+20% RSI=71.6"
+          "reason": "距MA60+20% RSI=71.3"
         },
         {
           "layer": "L4暴雷风险",
@@ -163,7 +163,7 @@
         {
           "layer": "L3高位透支",
           "pass": true,
-          "reason": "距MA60+30% RSI=94.3"
+          "reason": "距MA60+38% RSI=95.2"
         },
         {
           "layer": "L4暴雷风险",
@@ -199,7 +199,7 @@
         {
           "layer": "L3高位透支",
           "pass": true,
-          "reason": "距MA60+-24% RSI=27.8"
+          "reason": "距MA60+-22% RSI=31.0"
         },
         {
           "layer": "L4暴雷风险",
@@ -235,7 +235,7 @@
         {
           "layer": "L3高位透支",
           "pass": true,
-          "reason": "距MA60+-10% RSI=42.3"
+          "reason": "距MA60+-10% RSI=42.7"
         },
         {
           "layer": "L4暴雷风险",
@@ -297,7 +297,7 @@
         {
           "layer": "L1流动性",
           "pass": true,
-          "reason": "日均成交额15.4亿"
+          "reason": "日均成交额15.9亿"
         },
         {
           "layer": "L2基本面",
@@ -307,7 +307,7 @@
         {
           "layer": "L3高位透支",
           "pass": true,
-          "reason": "距MA60+-3% RSI=53.4"
+          "reason": "距MA60+-2% RSI=54.3"
         },
         {
           "layer": "L4暴雷风险",
@@ -405,7 +405,7 @@
         {
           "layer": "L1流动性",
           "pass": true,
-          "reason": "日均成交额6.7亿"
+          "reason": "日均成交额6.9亿"
         },
         {
           "layer": "L2基本面",
@@ -415,7 +415,7 @@
         {
           "layer": "L3高位透支",
           "pass": true,
-          "reason": "距MA60+42% RSI=92.3"
+          "reason": "距MA60+43% RSI=92.5"
         },
         {
           "layer": "L4暴雷风险",
@@ -441,7 +441,7 @@
         {
           "layer": "L1流动性",
           "pass": false,
-          "reason": "日均成交额0.3亿 < 0.5亿"
+          "reason": "日均成交额0.4亿 < 0.5亿"
         },
         {
           "layer": "L2基本面",
@@ -451,7 +451,7 @@
         {
           "layer": "L3高位透支",
           "pass": true,
-          "reason": "距MA60+1% RSI=52.1"
+          "reason": "距MA60+2% RSI=52.7"
         },
         {
           "layer": "L4暴雷风险",

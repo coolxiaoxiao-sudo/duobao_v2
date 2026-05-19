@@ -88,5 +88,35 @@
         "factor_discrimination": 0.73
       }
     }
+  },
+  {
+    "version": "v2.2",
+    "timestamp": "2026-05-19 16:27:21",
+    "action": "daily_adaptation",
+    "detail": {
+      "market_style": "TREND_UP",
+      "weights": {
+        "回撤深度": 0.0177,
+        "支撑强度": 0.2655,
+        "波动收敛": 0.2659,
+        "超卖强度": 0.1332,
+        "连跌衰竭": 0.1232,
+        "量价背离": 0.1946
+      },
+      "params": {
+        "max_position_pct": 0.35,
+        "stop_loss_pct": -0.06,
+        "take_profit_pct": 0.25,
+        "trailing_stop_pct": 0.07,
+        "max_drawdown_tolerance": 0.15,
+        "cash_reserve": 0.1
+      },
+      "efficacy": {
+        "status": "ok",
+        "win_rate": 0.182,
+        "buy_avg_return": 1.5,
+        "factor_discrimination": 1.5
+      }
+    }
   }
 ]
