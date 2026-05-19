@@ -1,0 +1,507 @@
+{
+  "date": "2026-05-19",
+  "total": 11,
+  "elite": 0,
+  "watch": 0,
+  "reject": 11,
+  "elite_pool": [],
+  "watch_list": [],
+  "reject_list": [
+    {
+      "code": "301316.SZ",
+      "name": "慧博云通",
+      "failed_layers": [
+        "L1流动性",
+        "L2基本面",
+        "L5筹码结构"
+      ]
+    },
+    {
+      "code": "300825.SZ",
+      "name": "阿尔特",
+      "failed_layers": [
+        "L1流动性",
+        "L2基本面",
+        "L5筹码结构"
+      ]
+    },
+    {
+      "code": "002501.SZ",
+      "name": "*ST利源",
+      "failed_layers": [
+        "L1流动性",
+        "L2基本面",
+        "L4暴雷风险",
+        "L5筹码结构"
+      ]
+    },
+    {
+      "code": "600392.SH",
+      "name": "盛和资源",
+      "failed_layers": [
+        "L1流动性",
+        "L2基本面",
+        "L5筹码结构"
+      ]
+    },
+    {
+      "code": "002366.SZ",
+      "name": "融发核电",
+      "failed_layers": [
+        "L1流动性",
+        "L2基本面",
+        "L5筹码结构"
+      ]
+    },
+    {
+      "code": "688111.SH",
+      "name": "金山办公",
+      "failed_layers": [
+        "L2基本面",
+        "L5筹码结构"
+      ]
+    },
+    {
+      "code": "301638.SZ",
+      "name": "南网数字",
+      "failed_layers": [
+        "L1流动性",
+        "L2基本面",
+        "L5筹码结构"
+      ]
+    },
+    {
+      "code": "601929.SH",
+      "name": "吉视传媒",
+      "failed_layers": [
+        "L1流动性",
+        "L2基本面",
+        "L5筹码结构"
+      ]
+    },
+    {
+      "code": "688107.SH",
+      "name": "安路科技",
+      "failed_layers": [
+        "L2基本面",
+        "L5筹码结构"
+      ]
+    },
+    {
+      "code": "603259.SH",
+      "name": "药明康德",
+      "failed_layers": [
+        "L1流动性",
+        "L2基本面",
+        "L5筹码结构"
+      ]
+    },
+    {
+      "code": "600905.SH",
+      "name": "三峡能源",
+      "failed_layers": [
+        "L1流动性",
+        "L2基本面",
+        "L5筹码结构"
+      ]
+    }
+  ],
+  "details": {
+    "301316.SZ": {
+      "code": "301316.SZ",
+      "name": "慧博云通",
+      "industry": "计算机",
+      "passed": false,
+      "pass_count": "2/5",
+      "layers": [
+        {
+          "layer": "L1流动性",
+          "pass": false,
+          "reason": "日均成交额0.1亿 < 0.5亿"
+        },
+        {
+          "layer": "L2基本面",
+          "pass": false,
+          "reason": "PE=225.86(高估)"
+        },
+        {
+          "layer": "L3高位透支",
+          "pass": true,
+          "reason": "距MA60+20% RSI=71.6"
+        },
+        {
+          "layer": "L4暴雷风险",
+          "pass": true,
+          "reason": "非ST"
+        },
+        {
+          "layer": "L5筹码结构",
+          "pass": false,
+          "reason": "换手0.0%极低"
+        }
+      ],
+      "warnings": [],
+      "score": 4
+    },
+    "300825.SZ": {
+      "code": "300825.SZ",
+      "name": "阿尔特",
+      "industry": "汽车",
+      "passed": false,
+      "pass_count": "2/5",
+      "layers": [
+        {
+          "layer": "L1流动性",
+          "pass": false,
+          "reason": "日均成交额0.0亿 < 0.5亿"
+        },
+        {
+          "layer": "L2基本面",
+          "pass": false,
+          "reason": "PE=-24.67(亏损)"
+        },
+        {
+          "layer": "L3高位透支",
+          "pass": true,
+          "reason": "距MA60+30% RSI=94.4"
+        },
+        {
+          "layer": "L4暴雷风险",
+          "pass": true,
+          "reason": "非ST"
+        },
+        {
+          "layer": "L5筹码结构",
+          "pass": false,
+          "reason": "换手0.0%极低"
+        }
+      ],
+      "warnings": [],
+      "score": 4
+    },
+    "002501.SZ": {
+      "code": "002501.SZ",
+      "name": "*ST利源",
+      "industry": "有色金属",
+      "passed": false,
+      "pass_count": "1/5",
+      "layers": [
+        {
+          "layer": "L1流动性",
+          "pass": false,
+          "reason": "日均成交额0.0亿 < 0.5亿"
+        },
+        {
+          "layer": "L2基本面",
+          "pass": false,
+          "reason": "PE=-28.97(亏损)"
+        },
+        {
+          "layer": "L3高位透支",
+          "pass": true,
+          "reason": "距MA60+-24% RSI=28.2"
+        },
+        {
+          "layer": "L4暴雷风险",
+          "pass": false,
+          "reason": "ST股，退市/债务风险极高"
+        },
+        {
+          "layer": "L5筹码结构",
+          "pass": false,
+          "reason": "换手0.0%极低"
+        }
+      ],
+      "warnings": [],
+      "score": 2
+    },
+    "600392.SH": {
+      "code": "600392.SH",
+      "name": "盛和资源",
+      "industry": "有色金属",
+      "passed": false,
+      "pass_count": "2/5",
+      "layers": [
+        {
+          "layer": "L1流动性",
+          "pass": false,
+          "reason": "日均成交额0.2亿 < 0.5亿"
+        },
+        {
+          "layer": "L2基本面",
+          "pass": false,
+          "reason": "PB=0异常"
+        },
+        {
+          "layer": "L3高位透支",
+          "pass": true,
+          "reason": "距MA60+-10% RSI=42.2"
+        },
+        {
+          "layer": "L4暴雷风险",
+          "pass": true,
+          "reason": "非ST"
+        },
+        {
+          "layer": "L5筹码结构",
+          "pass": false,
+          "reason": "换手0.0%极低"
+        }
+      ],
+      "warnings": [],
+      "score": 4
+    },
+    "002366.SZ": {
+      "code": "002366.SZ",
+      "name": "融发核电",
+      "industry": "电力设备",
+      "passed": false,
+      "pass_count": "2/5",
+      "layers": [
+        {
+          "layer": "L1流动性",
+          "pass": false,
+          "reason": "日均成交额0.0亿 < 0.5亿"
+        },
+        {
+          "layer": "L2基本面",
+          "pass": false,
+          "reason": "PE=-212.14(亏损)"
+        },
+        {
+          "layer": "L3高位透支",
+          "pass": true,
+          "reason": "距MA60+-2% RSI=67.8"
+        },
+        {
+          "layer": "L4暴雷风险",
+          "pass": true,
+          "reason": "非ST"
+        },
+        {
+          "layer": "L5筹码结构",
+          "pass": false,
+          "reason": "换手0.0%极低"
+        }
+      ],
+      "warnings": [],
+      "score": 4
+    },
+    "688111.SH": {
+      "code": "688111.SH",
+      "name": "金山办公",
+      "industry": "计算机",
+      "passed": false,
+      "pass_count": "3/5",
+      "layers": [
+        {
+          "layer": "L1流动性",
+          "pass": true,
+          "reason": "日均成交额14.9亿"
+        },
+        {
+          "layer": "L2基本面",
+          "pass": false,
+          "reason": "PB=0异常"
+        },
+        {
+          "layer": "L3高位透支",
+          "pass": true,
+          "reason": "距MA60+-3% RSI=52.3"
+        },
+        {
+          "layer": "L4暴雷风险",
+          "pass": true,
+          "reason": "非ST"
+        },
+        {
+          "layer": "L5筹码结构",
+          "pass": false,
+          "reason": "换手0.0%极低"
+        }
+      ],
+      "warnings": [],
+      "score": 6
+    },
+    "301638.SZ": {
+      "code": "301638.SZ",
+      "name": "南网数字",
+      "industry": "计算机",
+      "passed": false,
+      "pass_count": "2/5",
+      "layers": [
+        {
+          "layer": "L1流动性",
+          "pass": false,
+          "reason": "日均成交额0.1亿 < 0.5亿"
+        },
+        {
+          "layer": "L2基本面",
+          "pass": false,
+          "reason": "PB=0异常"
+        },
+        {
+          "layer": "L3高位透支",
+          "pass": true,
+          "reason": "距MA60+11% RSI=63.4"
+        },
+        {
+          "layer": "L4暴雷风险",
+          "pass": true,
+          "reason": "非ST"
+        },
+        {
+          "layer": "L5筹码结构",
+          "pass": false,
+          "reason": "换手0.0%极低"
+        }
+      ],
+      "warnings": [],
+      "score": 4
+    },
+    "601929.SH": {
+      "code": "601929.SH",
+      "name": "吉视传媒",
+      "industry": "传媒",
+      "passed": false,
+      "pass_count": "2/5",
+      "layers": [
+        {
+          "layer": "L1流动性",
+          "pass": false,
+          "reason": "日均成交额0.1亿 < 0.5亿"
+        },
+        {
+          "layer": "L2基本面",
+          "pass": false,
+          "reason": "PE=-25.44(亏损)"
+        },
+        {
+          "layer": "L3高位透支",
+          "pass": true,
+          "reason": "距MA60+6% RSI=72.4"
+        },
+        {
+          "layer": "L4暴雷风险",
+          "pass": true,
+          "reason": "非ST"
+        },
+        {
+          "layer": "L5筹码结构",
+          "pass": false,
+          "reason": "换手0.0%极低"
+        }
+      ],
+      "warnings": [],
+      "score": 4
+    },
+    "688107.SH": {
+      "code": "688107.SH",
+      "name": "安路科技",
+      "industry": "电子",
+      "passed": false,
+      "pass_count": "3/5",
+      "layers": [
+        {
+          "layer": "L1流动性",
+          "pass": true,
+          "reason": "日均成交额6.6亿"
+        },
+        {
+          "layer": "L2基本面",
+          "pass": false,
+          "reason": "PE=-71.88(亏损)"
+        },
+        {
+          "layer": "L3高位透支",
+          "pass": true,
+          "reason": "距MA60+43% RSI=92.4"
+        },
+        {
+          "layer": "L4暴雷风险",
+          "pass": true,
+          "reason": "非ST"
+        },
+        {
+          "layer": "L5筹码结构",
+          "pass": false,
+          "reason": "换手0.0%极低"
+        }
+      ],
+      "warnings": [],
+      "score": 6
+    },
+    "603259.SH": {
+      "code": "603259.SH",
+      "name": "药明康德",
+      "industry": "医药生物",
+      "passed": false,
+      "pass_count": "2/5",
+      "layers": [
+        {
+          "layer": "L1流动性",
+          "pass": false,
+          "reason": "日均成交额0.3亿 < 0.5亿"
+        },
+        {
+          "layer": "L2基本面",
+          "pass": false,
+          "reason": "PB=0异常"
+        },
+        {
+          "layer": "L3高位透支",
+          "pass": true,
+          "reason": "距MA60+1% RSI=52.0"
+        },
+        {
+          "layer": "L4暴雷风险",
+          "pass": true,
+          "reason": "非ST"
+        },
+        {
+          "layer": "L5筹码结构",
+          "pass": false,
+          "reason": "换手0.0%极低"
+        }
+      ],
+      "warnings": [],
+      "score": 4
+    },
+    "600905.SH": {
+      "code": "600905.SH",
+      "name": "三峡能源",
+      "industry": "电力",
+      "passed": false,
+      "pass_count": "2/5",
+      "layers": [
+        {
+          "layer": "L1流动性",
+          "pass": false,
+          "reason": "日均成交额0.1亿 < 0.5亿"
+        },
+        {
+          "layer": "L2基本面",
+          "pass": false,
+          "reason": "PB=0异常"
+        },
+        {
+          "layer": "L3高位透支",
+          "pass": true,
+          "reason": "距MA60+-0% RSI=54.3"
+        },
+        {
+          "layer": "L4暴雷风险",
+          "pass": true,
+          "reason": "非ST"
+        },
+        {
+          "layer": "L5筹码结构",
+          "pass": false,
+          "reason": "换手0.0%极低"
+        }
+      ],
+      "warnings": [],
+      "score": 4
+    }
+  }
+}

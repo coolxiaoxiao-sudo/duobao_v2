@@ -1,0 +1,134 @@
+{
+  "date": "2026-05-19",
+  "snapshots_count": 3,
+  "verifications_count": 22,
+  "factor_performance": {
+    "by_signal": {
+      "WATCH": {
+        "count": 3,
+        "win_rate": 0.0,
+        "avg_return": -3.58
+      },
+      "BUY": {
+        "count": 7,
+        "win_rate": 0.571,
+        "avg_return": 0.4
+      },
+      "HOLD": {
+        "count": 9,
+        "win_rate": 0.556,
+        "avg_return": 2.43
+      },
+      "AVOID": {
+        "count": 3,
+        "win_rate": 0.333,
+        "avg_return": 1.0
+      }
+    },
+    "by_score_range": {
+      "中分(4-5.5)": {
+        "count": 9,
+        "win_rate": 0.444,
+        "avg_return": -0.72
+      },
+      "低分(<4)": {
+        "count": 12,
+        "win_rate": 0.5,
+        "avg_return": 2.07
+      },
+      "高分(>=5.5)": {
+        "count": 1,
+        "win_rate": 0.0,
+        "avg_return": -1.41
+      }
+    }
+  },
+  "patterns": {
+    "top_wins": [
+      {
+        "name": "吉视传媒",
+        "signal": "HOLD",
+        "return": 9.9
+      },
+      {
+        "name": "阿尔特",
+        "signal": "HOLD",
+        "return": 5.26
+      },
+      {
+        "name": "阿尔特",
+        "signal": "HOLD",
+        "return": 4.15
+      },
+      {
+        "name": "吉视传媒",
+        "signal": "BUY",
+        "return": 4.12
+      },
+      {
+        "name": "南网数字",
+        "signal": "HOLD",
+        "return": 3.26
+      }
+    ],
+    "top_losses": [
+      {
+        "name": "*ST利源",
+        "signal": "BUY",
+        "return": -1.41
+      },
+      {
+        "name": "慧博云通",
+        "signal": "HOLD",
+        "return": -2.48
+      },
+      {
+        "name": "*ST利源",
+        "signal": "WATCH",
+        "return": -2.74
+      },
+      {
+        "name": "盛和资源",
+        "signal": "WATCH",
+        "return": -3.66
+      },
+      {
+        "name": "盛和资源",
+        "signal": "WATCH",
+        "return": -4.34
+      }
+    ],
+    "best_combo": [
+      "BUY_REDUCE",
+      {
+        "correct": 1,
+        "total": 1,
+        "returns": [
+          -0.92
+        ],
+        "win_rate": 1.0,
+        "avg_return": -0.92
+      }
+    ],
+    "worst_combo": [
+      "BUY_ADD",
+      {
+        "correct": 0,
+        "total": 1,
+        "returns": [
+          -0.65
+        ],
+        "win_rate": 0.0,
+        "avg_return": -0.65
+      }
+    ],
+    "total_correct": 10,
+    "total_wrong": 12,
+    "overall_win_rate": 0.455
+  },
+  "suggestions": [
+    "整体胜率低于50%，建议重新审视因子权重",
+    "组合'BUY_ADD'胜率仅0%，建议淘汰或优化",
+    "组合'BUY_REDUCE'胜率达100%，建议固化加仓"
+  ]
+}

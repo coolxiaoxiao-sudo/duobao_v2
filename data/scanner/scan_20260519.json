@@ -1,0 +1,331 @@
+{
+  "date": "2026-05-19",
+  "market_trend": {
+    "phase": "偏空震荡",
+    "confidence": 0.55,
+    "signals": [
+      "弱势震荡",
+      "观望为主"
+    ],
+    "risk_warning": "谨防向下破位",
+    "pct_chg": 0.64,
+    "volume_ratio": 1
+  },
+  "sector_rotation": {
+    "sector_heatmap": {
+      "计算机": {
+        "avg_trend": 10.0,
+        "stocks": 3
+      },
+      "汽车": {
+        "avg_trend": 11.2,
+        "stocks": 1
+      },
+      "有色金属": {
+        "avg_trend": 6.4,
+        "stocks": 2
+      },
+      "电力设备": {
+        "avg_trend": 9.5,
+        "stocks": 1
+      },
+      "传媒": {
+        "avg_trend": 10.8,
+        "stocks": 1
+      },
+      "电子": {
+        "avg_trend": 10.0,
+        "stocks": 1
+      },
+      "医药生物": {
+        "avg_trend": 7.3,
+        "stocks": 1
+      },
+      "电力": {
+        "avg_trend": 10.2,
+        "stocks": 1
+      }
+    },
+    "hot_sector": [
+      "汽车",
+      {
+        "avg_trend": 11.2,
+        "stocks": 1
+      }
+    ],
+    "cold_sector": [
+      "有色金属",
+      {
+        "avg_trend": 6.4,
+        "stocks": 2
+      }
+    ],
+    "rotation_signal": "无明显轮动"
+  },
+  "stock_scans": {
+    "301316.SZ": {
+      "name": "慧博云通",
+      "industry": "计算机",
+      "cycle": {
+        "cycle": "主升期",
+        "confidence": 0.65,
+        "signals": [
+          "趋势向上",
+          "量价配合"
+        ],
+        "risk_warning": "可持有，设移动止盈",
+        "trend_score": 10.9,
+        "rsi": 71.6,
+        "vol_ratio": 0.59
+      },
+      "manipulation": {
+        "pattern": "无明显异常操纵痕迹",
+        "confidence": 0.3,
+        "trap_warning": "无明显陷阱",
+        "rsi": 71.6,
+        "vol_ratio": 0.59,
+        "atr_pct": 6.43
+      }
+    },
+    "300825.SZ": {
+      "name": "阿尔特",
+      "industry": "汽车",
+      "cycle": {
+        "cycle": "拉升期",
+        "confidence": 0.75,
+        "signals": [
+          "均线多头",
+          "放量",
+          "趋势强劲"
+        ],
+        "risk_warning": "高位追高风险，注意主力出货",
+        "trend_score": 11.2,
+        "rsi": 94.4,
+        "vol_ratio": 1.6
+      },
+      "manipulation": {
+        "pattern": "放量拉升 → 主力/游资推动",
+        "confidence": 0.55,
+        "trap_warning": "无明显陷阱",
+        "rsi": 94.4,
+        "vol_ratio": 1.6,
+        "atr_pct": 4.48
+      }
+    },
+    "002501.SZ": {
+      "name": "*ST利源",
+      "industry": "有色金属",
+      "cycle": {
+        "cycle": "退潮/出货期",
+        "confidence": 0.7,
+        "signals": [
+          "均线空头",
+          "弱势",
+          "资金流出"
+        ],
+        "risk_warning": "反弹减仓，不追",
+        "trend_score": 7.1,
+        "rsi": 28.2,
+        "vol_ratio": 0.49
+      },
+      "manipulation": {
+        "pattern": "无明显异常操纵痕迹",
+        "confidence": 0.3,
+        "trap_warning": "无明显陷阱",
+        "rsi": 28.2,
+        "vol_ratio": 0.49,
+        "atr_pct": 6.07
+      }
+    },
+    "600392.SH": {
+      "name": "盛和资源",
+      "industry": "有色金属",
+      "cycle": {
+        "cycle": "震荡期",
+        "confidence": 0.4,
+        "signals": [
+          "方向不明"
+        ],
+        "risk_warning": "观望等待方向选择",
+        "trend_score": 5.7,
+        "rsi": 42.2,
+        "vol_ratio": 0.63
+      },
+      "manipulation": {
+        "pattern": "无明显异常操纵痕迹",
+        "confidence": 0.3,
+        "trap_warning": "无明显陷阱",
+        "rsi": 42.2,
+        "vol_ratio": 0.63,
+        "atr_pct": 5.34
+      }
+    },
+    "002366.SZ": {
+      "name": "融发核电",
+      "industry": "电力设备",
+      "cycle": {
+        "cycle": "主升期",
+        "confidence": 0.65,
+        "signals": [
+          "趋势向上",
+          "量价配合"
+        ],
+        "risk_warning": "可持有，设移动止盈",
+        "trend_score": 9.5,
+        "rsi": 67.8,
+        "vol_ratio": 0.66
+      },
+      "manipulation": {
+        "pattern": "无明显异常操纵痕迹",
+        "confidence": 0.3,
+        "trap_warning": "无明显陷阱",
+        "rsi": 67.8,
+        "vol_ratio": 0.66,
+        "atr_pct": 2.97
+      }
+    },
+    "688111.SH": {
+      "name": "金山办公",
+      "industry": "计算机",
+      "cycle": {
+        "cycle": "震荡期",
+        "confidence": 0.4,
+        "signals": [
+          "方向不明"
+        ],
+        "risk_warning": "观望等待方向选择",
+        "trend_score": 7.8,
+        "rsi": 52.3,
+        "vol_ratio": 1.03
+      },
+      "manipulation": {
+        "pattern": "无明显异常操纵痕迹",
+        "confidence": 0.3,
+        "trap_warning": "无明显陷阱",
+        "rsi": 52.3,
+        "vol_ratio": 1.03,
+        "atr_pct": 3.74
+      }
+    },
+    "301638.SZ": {
+      "name": "南网数字",
+      "industry": "计算机",
+      "cycle": {
+        "cycle": "主升期",
+        "confidence": 0.65,
+        "signals": [
+          "趋势向上",
+          "量价配合"
+        ],
+        "risk_warning": "可持有，设移动止盈",
+        "trend_score": 11.4,
+        "rsi": 63.4,
+        "vol_ratio": 0.93
+      },
+      "manipulation": {
+        "pattern": "无明显异常操纵痕迹",
+        "confidence": 0.3,
+        "trap_warning": "无明显陷阱",
+        "rsi": 63.4,
+        "vol_ratio": 0.93,
+        "atr_pct": 5.54
+      }
+    },
+    "601929.SH": {
+      "name": "吉视传媒",
+      "industry": "传媒",
+      "cycle": {
+        "cycle": "拉升期",
+        "confidence": 0.75,
+        "signals": [
+          "均线多头",
+          "放量",
+          "趋势强劲"
+        ],
+        "risk_warning": "高位追高风险，注意主力出货",
+        "trend_score": 10.8,
+        "rsi": 72.4,
+        "vol_ratio": 2.61
+      },
+      "manipulation": {
+        "pattern": "放量拉升 → 主力/游资推动",
+        "confidence": 0.55,
+        "trap_warning": "谨防诱多",
+        "rsi": 72.4,
+        "vol_ratio": 2.61,
+        "atr_pct": 3.58
+      }
+    },
+    "688107.SH": {
+      "name": "安路科技",
+      "industry": "电子",
+      "cycle": {
+        "cycle": "主升期",
+        "confidence": 0.65,
+        "signals": [
+          "趋势向上",
+          "量价配合"
+        ],
+        "risk_warning": "可持有，设移动止盈",
+        "trend_score": 10.0,
+        "rsi": 92.4,
+        "vol_ratio": 0.75
+      },
+      "manipulation": {
+        "pattern": "高位缩量滞涨 → 疑似出货",
+        "confidence": 0.6,
+        "trap_warning": "无明显陷阱",
+        "rsi": 92.4,
+        "vol_ratio": 0.75,
+        "atr_pct": 5.95
+      }
+    },
+    "603259.SH": {
+      "name": "药明康德",
+      "industry": "医药生物",
+      "cycle": {
+        "cycle": "震荡期",
+        "confidence": 0.4,
+        "signals": [
+          "方向不明"
+        ],
+        "risk_warning": "观望等待方向选择",
+        "trend_score": 7.3,
+        "rsi": 52.0,
+        "vol_ratio": 0.52
+      },
+      "manipulation": {
+        "pattern": "无明显异常操纵痕迹",
+        "confidence": 0.3,
+        "trap_warning": "无明显陷阱",
+        "rsi": 52.0,
+        "vol_ratio": 0.52,
+        "atr_pct": 4.2
+      }
+    },
+    "600905.SH": {
+      "name": "三峡能源",
+      "industry": "电力",
+      "cycle": {
+        "cycle": "主升期",
+        "confidence": 0.65,
+        "signals": [
+          "趋势向上",
+          "量价配合"
+        ],
+        "risk_warning": "可持有，设移动止盈",
+        "trend_score": 10.2,
+        "rsi": 54.3,
+        "vol_ratio": 0.69
+      },
+      "manipulation": {
+        "pattern": "无明显异常操纵痕迹",
+        "confidence": 0.3,
+        "trap_warning": "无明显陷阱",
+        "rsi": 54.3,
+        "vol_ratio": 0.69,
+        "atr_pct": 1.48
+      }
+    }
+  }
+}

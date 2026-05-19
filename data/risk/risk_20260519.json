@@ -1,0 +1,228 @@
+{
+  "date": "2026-05-19",
+  "overall": "YELLOW",
+  "overall_action": "部分持仓偏高，注意防守",
+  "market_risk": {
+    "risk_level": "低风险",
+    "risk_score": 0,
+    "signals": [],
+    "action_plan": "正常仓位，按计划操作"
+  },
+  "sector_risk": {
+    "sector_risks": {
+      "计算机": {
+        "avg_risk": 2.3,
+        "stock_count": 3,
+        "warning": "计算机板块风险可控"
+      },
+      "汽车": {
+        "avg_risk": 3.0,
+        "stock_count": 1,
+        "warning": "汽车板块风险可控"
+      },
+      "有色金属": {
+        "avg_risk": 5.5,
+        "stock_count": 2,
+        "warning": "有色金属板块需关注"
+      },
+      "电力设备": {
+        "avg_risk": 8.0,
+        "stock_count": 1,
+        "warning": "电力设备板块整体风险偏高，有退潮风险"
+      },
+      "传媒": {
+        "avg_risk": 5.0,
+        "stock_count": 1,
+        "warning": "传媒板块需关注"
+      },
+      "电子": {
+        "avg_risk": 3.0,
+        "stock_count": 1,
+        "warning": "电子板块风险可控"
+      },
+      "医药生物": {
+        "avg_risk": 1.0,
+        "stock_count": 1,
+        "warning": "医药生物板块风险可控"
+      },
+      "电力": {
+        "avg_risk": 0.0,
+        "stock_count": 1,
+        "warning": "电力板块风险可控"
+      }
+    },
+    "highest_risk_sector": "电力设备"
+  },
+  "individual_risks": {
+    "301316.SZ": {
+      "code": "301316.SZ",
+      "name": "慧博云通",
+      "price": 56.62,
+      "risk_level": "LOW",
+      "risk_score": 1,
+      "risks": [
+        {
+          "type": "轻微下跌",
+          "detail": "小跌2天",
+          "severity": "LOW"
+        }
+      ],
+      "action_plan": "正常持有，按计划操作"
+    },
+    "300825.SZ": {
+      "code": "300825.SZ",
+      "name": "阿尔特",
+      "price": 12.41,
+      "risk_level": "MEDIUM",
+      "risk_score": 3,
+      "risks": [
+        {
+          "type": "极端超买",
+          "detail": "RSI=94.4",
+          "severity": "HIGH"
+        }
+      ],
+      "action_plan": "密切关注，设好止损单"
+    },
+    "002501.SZ": {
+      "code": "002501.SZ",
+      "name": "*ST利源",
+      "price": 1.4,
+      "risk_level": "CRITICAL",
+      "risk_score": 8,
+      "risks": [
+        {
+          "type": "连跌风险",
+          "detail": "连跌4天",
+          "severity": "HIGH"
+        },
+        {
+          "type": "止损逼近",
+          "detail": "仅距-40.2%",
+          "severity": "CRITICAL"
+        }
+      ],
+      "action_plan": "立即评估是否减仓/清仓。主因: 止损逼近"
+    },
+    "600392.SH": {
+      "code": "600392.SH",
+      "name": "盛和资源",
+      "price": 23.17,
+      "risk_level": "MEDIUM",
+      "risk_score": 3,
+      "risks": [
+        {
+          "type": "连跌风险",
+          "detail": "连跌4天",
+          "severity": "HIGH"
+        }
+      ],
+      "action_plan": "密切关注，设好止损单"
+    },
+    "002366.SZ": {
+      "code": "002366.SZ",
+      "name": "融发核电",
+      "price": 7.51,
+      "risk_level": "CRITICAL",
+      "risk_score": 8,
+      "risks": [
+        {
+          "type": "连跌风险",
+          "detail": "连跌4天",
+          "severity": "HIGH"
+        },
+        {
+          "type": "止损逼近",
+          "detail": "仅距-14.4%",
+          "severity": "CRITICAL"
+        }
+      ],
+      "action_plan": "立即评估是否减仓/清仓。主因: 止损逼近"
+    },
+    "688111.SH": {
+      "code": "688111.SH",
+      "name": "金山办公",
+      "price": 252.44,
+      "risk_level": "HIGH",
+      "risk_score": 6,
+      "risks": [
+        {
+          "type": "轻微下跌",
+          "detail": "小跌1天",
+          "severity": "LOW"
+        },
+        {
+          "type": "止损逼近",
+          "detail": "仅距-36.4%",
+          "severity": "CRITICAL"
+        }
+      ],
+      "action_plan": "减仓至半仓以下，设严格止损，不补仓"
+    },
+    "301638.SZ": {
+      "code": "301638.SZ",
+      "name": "南网数字",
+      "price": 30.69,
+      "risk_level": "LOW",
+      "risk_score": 0,
+      "risks": [],
+      "action_plan": "正常持有，按计划操作"
+    },
+    "601929.SH": {
+      "code": "601929.SH",
+      "name": "吉视传媒",
+      "price": 3.33,
+      "risk_level": "HIGH",
+      "risk_score": 5,
+      "risks": [
+        {
+          "type": "止损逼近",
+          "detail": "仅距-20.1%",
+          "severity": "CRITICAL"
+        }
+      ],
+      "action_plan": "减仓至半仓以下，设严格止损，不补仓"
+    },
+    "688107.SH": {
+      "code": "688107.SH",
+      "name": "安路科技",
+      "price": 45.66,
+      "risk_level": "MEDIUM",
+      "risk_score": 3,
+      "risks": [
+        {
+          "type": "极端超买",
+          "detail": "RSI=92.4",
+          "severity": "HIGH"
+        }
+      ],
+      "action_plan": "密切关注，设好止损单"
+    },
+    "603259.SH": {
+      "code": "603259.SH",
+      "name": "药明康德",
+      "price": 101.39,
+      "risk_level": "LOW",
+      "risk_score": 1,
+      "risks": [
+        {
+          "type": "轻微下跌",
+          "detail": "小跌2天",
+          "severity": "LOW"
+        }
+      ],
+      "action_plan": "正常持有，按计划操作"
+    },
+    "600905.SH": {
+      "code": "600905.SH",
+      "name": "三峡能源",
+      "price": 4.19,
+      "risk_level": "LOW",
+      "risk_score": 0,
+      "risks": [],
+      "action_plan": "正常持有，按计划操作"
+    }
+  },
+  "critical_count": 2,
+  "high_count": 2
+}

@@ -1,9 +1,9 @@
 ﻿api_keys:
   deepseek_api_key: ${DEEPSEEK_KEY}
-  deepseek_api_key_fallback: ${DEEPSEEK_KEY}
+  deepseek_api_key_fallback: sk-9c1b49c2ffb24c32bd4cb3461580a285
   fred_api_key: ''
   tushare_token: ${TUSHARE_TOKEN}
-  tushare_token_fallback: ${TUSHARE_TOKEN}
+  tushare_token_fallback: e2ee4f0657acf930e92e0165183a9217310c05a720a3504cc86dcfa6
 data_sources:
   tencent:
     enabled: true

@@ -285,3 +285,29 @@ def full_market_scan() -> dict:
         json.dump(result, f, ensure_ascii=False, indent=2)
 
     return result
+
+
+def identify_sentiment_cycle(indices=None) -> dict:
+    """市场情绪周期: 极度恐慌/恐慌/中性/乐观/贪婪"""
+    if indices is None:
+        try:
+            from layer1_data.tencent_api import get_indices
+            indices = get_indices()
+        except:
+            return {"cycle": "UNKNOWN", "score": 50}
+    pcts, vols = [], []
+    for name, data in indices.items():
+        if not isinstance(data, dict): continue
+        pcts.append(data.get("pct_chg",0) or 0)
+        vols.append(data.get("volume_ratio",1) or 1)
+    if not pcts: return {"cycle": "UNKNOWN", "score": 50}
+    avg_pct, avg_vol = np.mean(pcts), np.mean(vols)
+    sentiment = max(0, min(100, 50 + avg_pct*5 + (avg_vol-1)*10))
+    if sentiment >= 80: cycle = "贪婪"; advice = "极度乐观，严控仓位不追高"
+    elif sentiment >= 65: cycle = "乐观"; advice = "情绪积极，持股设移动止盈"
+    elif sentiment >= 40: cycle = "中性"; advice = "情绪平稳，按策略操作"
+    elif sentiment >= 25: cycle = "恐慌"; advice = "接近底部区域，分批布局"
+    else: cycle = "极度恐慌"; advice = "极端恐慌往往是底部，等待企稳"
+    return {"cycle": cycle, "score": round(sentiment,1),
+            "avg_pct_chg": round(avg_pct,2), "avg_vol_ratio": round(avg_vol,2),
+            "advice": advice}

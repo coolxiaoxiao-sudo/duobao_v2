@@ -17,6 +17,9 @@
   python main.py --points     买卖临界点
   python main.py --multi      多智能体协同研判
   python main.py --learn      策略研习总结
+  python main.py --screen     多层严筛
+  python main.py --drivers    驱动逻辑拆解
+  python main.py --review     自动复盘
 """
 import json, sys, os
 from datetime import datetime
@@ -256,7 +259,46 @@ def evolve_full():
     except Exception as e:
         print(f"  [FAIL] {e}")
 
+    # Layer 7: 多层严筛
+    print("\n[Layer 7.7] 多层严筛")
+    try:
+        from layer7_evolution.stock_screener import screen_portfolio
+        scr = screen_portfolio()
+        print(f"  精选池:{scr['elite']}只 关注:{scr['watch']}只 淘汰:{scr['reject']}只")
+        if scr['elite_pool']:
+            for e in scr['elite_pool'][:3]:
+                print(f"    精选: {e['name']} 评分{e['score']}")
+    except Exception as e:
+        print(f"  [FAIL] {e}")
+
+    # Layer 7: 驱动逻辑拆解
+    print("\n[Layer 7.8] 驱动逻辑拆解")
+    try:
+        from layer7_evolution.driver_analyzer import batch_analyze_drivers
+        drv = batch_analyze_drivers()
+        grades = drv.get('grades', {})
+        for g in ['A','B','C','D']:
+            stocks = grades.get(g, [])
+            if stocks:
+                names = ', '.join(f"{s['name']}({s['net']:+d})" for s in stocks)
+                print(f"  等级{g}: {names}")
+    except Exception as e:
+        print(f"  [FAIL] {e}")
+
+    # Layer 7: 自动复盘
+    print("\n[Layer 7.9] 自动复盘")
+    try:
+        from layer7_evolution.trade_reviewer import generate_review_report
+        rev = generate_review_report()
+        wr = rev.get('patterns', {}).get('overall_win_rate', 0)
+        print(f"  历史胜率: {wr:.0%} | 快照数: {rev.get('snapshots_count',0)}")
+        for sug in rev.get('suggestions', [])[:3]:
+            print(f"  建议: {sug}")
+    except Exception as e:
+        print(f"  [FAIL] {e}")
+
     # 运行传统 full 分析
+
     print("\n" + "=" * 50)
     print("  进化层完成，运行传统六层分析...")
     print("=" * 50)

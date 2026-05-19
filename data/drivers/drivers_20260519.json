@@ -1,0 +1,647 @@
+{
+  "301316.SZ": {
+    "code": "301316.SZ",
+    "name": "慧博云通",
+    "industry": "计算机",
+    "date": "2026-05-19",
+    "price": 56.62,
+    "grade": "B",
+    "grade_desc": "偏多确定，但存在一定隐患",
+    "bull_score": 7,
+    "bear_score": 3,
+    "net_score": 4,
+    "drivers_bullish": [
+      {
+        "factor": "趋势强势",
+        "impact": 5,
+        "logic": "趋势总分10.9/12，MA排列bullish，ADX=46.7趋势明确",
+        "sustainability": "中期持续（1-3个月）"
+      },
+      {
+        "factor": "持仓浮盈",
+        "impact": 2,
+        "logic": "浮盈21.0%，成本优势",
+        "sustainability": "持续"
+      }
+    ],
+    "drivers_bearish": [
+      {
+        "factor": "超买",
+        "impact": 3,
+        "logic": "RSI=71.6偏高，追涨风险增大",
+        "sustainability": "短期"
+      }
+    ],
+    "scenarios": {
+      "乐观": {
+        "target": 66.72,
+        "probability": "33%",
+        "path": "放量突破MA20 → 测试布林上轨 → 向上拓展",
+        "condition": "需成交量放大至1.5倍+，MACD金叉确认"
+      },
+      "中性": {
+        "target": 53.03,
+        "probability": "46%",
+        "path": "在布林带中轨附近震荡 → 等待方向选择",
+        "condition": "维持当前量能水平"
+      },
+      "悲观": {
+        "target": 40.4,
+        "probability": "17%",
+        "path": "跌破MA20 → 测试布林下轨 → 可能加速下行",
+        "condition": "缩量下跌或放量破位"
+      }
+    },
+    "hazards": [
+      "流动性风险：缩量状态下突破概率低"
+    ],
+    "action_plan": "偏多操作：可在支撑位附近布局，止损设于42.53，目标66.72",
+    "top_bullish": "趋势强势",
+    "top_bearish": "超买"
+  },
+  "300825.SZ": {
+    "code": "300825.SZ",
+    "name": "阿尔特",
+    "industry": "汽车",
+    "date": "2026-05-19",
+    "price": 12.41,
+    "grade": "B",
+    "grade_desc": "偏多确定，但存在一定隐患",
+    "bull_score": 11,
+    "bear_score": 5,
+    "net_score": 6,
+    "drivers_bullish": [
+      {
+        "factor": "趋势强势",
+        "impact": 5,
+        "logic": "趋势总分11.2/12，MA排列bullish，ADX=55.2趋势明确",
+        "sustainability": "中期持续（1-3个月）"
+      },
+      {
+        "factor": "放量资金流入",
+        "impact": 4,
+        "logic": "成交量1.6倍均量，资金积极介入",
+        "sustainability": "需观察持续性，1-2天确认"
+      },
+      {
+        "factor": "持仓浮盈",
+        "impact": 2,
+        "logic": "浮盈13.8%，成本优势",
+        "sustainability": "持续"
+      }
+    ],
+    "drivers_bearish": [
+      {
+        "factor": "严重超买",
+        "impact": 5,
+        "logic": "RSI=94.4极端超买，短期回调概率极高",
+        "sustainability": "短期（1-3天）"
+      }
+    ],
+    "scenarios": {
+      "乐观": {
+        "target": 12.81,
+        "probability": "37%",
+        "path": "放量突破MA20 → 测试布林上轨 → 向上拓展",
+        "condition": "需成交量放大至1.5倍+，MACD金叉确认"
+      },
+      "中性": {
+        "target": 10.03,
+        "probability": "44%",
+        "path": "在布林带中轨附近震荡 → 等待方向选择",
+        "condition": "维持当前量能水平"
+      },
+      "悲观": {
+        "target": 7.46,
+        "probability": "15%",
+        "path": "跌破MA20 → 测试布林下轨 → 可能加速下行",
+        "condition": "缩量下跌或放量破位"
+      }
+    },
+    "hazards": [
+      "超买回调风险：RSI偏高，短期可能3-5%回撤"
+    ],
+    "action_plan": "偏多操作：可在支撑位附近布局，止损设于7.85，目标12.81",
+    "top_bullish": "趋势强势",
+    "top_bearish": "严重超买"
+  },
+  "002501.SZ": {
+    "code": "002501.SZ",
+    "name": "*ST利源",
+    "industry": "有色金属",
+    "date": "2026-05-19",
+    "price": 1.4,
+    "grade": "C",
+    "grade_desc": "多空分歧，方向不明，需等待催化",
+    "bull_score": 8,
+    "bear_score": 12,
+    "net_score": -4,
+    "drivers_bullish": [
+      {
+        "factor": "趋势强势",
+        "impact": 5,
+        "logic": "趋势总分7.1/12，MA排列bearish_weak，ADX=46.7趋势明确",
+        "sustainability": "中期持续（1-3个月）"
+      },
+      {
+        "factor": "超卖反弹",
+        "impact": 3,
+        "logic": "RSI=28.2进入超卖区，短期抛压衰竭，技术性反弹概率高",
+        "sustainability": "短期（3-5天）"
+      }
+    ],
+    "drivers_bearish": [
+      {
+        "factor": "严重缩量",
+        "impact": 3,
+        "logic": "成交量仅0.5倍均量，资金冷清",
+        "sustainability": "可能持续"
+      },
+      {
+        "factor": "止损逼近",
+        "impact": 5,
+        "logic": "距止损仅-40.2%，随时可能触发",
+        "sustainability": "即时风险"
+      },
+      {
+        "factor": "深度套牢",
+        "impact": 4,
+        "logic": "浮亏-45.0%，解套难度大",
+        "sustainability": "长期压力"
+      }
+    ],
+    "scenarios": {
+      "乐观": {
+        "target": 2.06,
+        "probability": "17%",
+        "path": "放量突破MA20 → 测试布林上轨 → 向上拓展",
+        "condition": "需成交量放大至1.5倍+，MACD金叉确认"
+      },
+      "中性": {
+        "target": 1.56,
+        "probability": "46%",
+        "path": "在布林带中轨附近震荡 → 等待方向选择",
+        "condition": "维持当前量能水平"
+      },
+      "悲观": {
+        "target": 1.1,
+        "probability": "33%",
+        "path": "跌破MA20 → 测试布林下轨 → 可能加速下行",
+        "condition": "缩量下跌或放量破位"
+      }
+    },
+    "hazards": [
+      "流动性风险：缩量状态下突破概率低",
+      "多空失衡：利空因子占优，需等待利空出尽"
+    ],
+    "action_plan": "观望为主：等待方向确认，若放量突破1.56可轻仓跟进",
+    "top_bullish": "趋势强势",
+    "top_bearish": "严重缩量"
+  },
+  "600392.SH": {
+    "code": "600392.SH",
+    "name": "盛和资源",
+    "industry": "有色金属",
+    "date": "2026-05-19",
+    "price": 23.17,
+    "grade": "C",
+    "grade_desc": "多空交织，需进一步确认",
+    "bull_score": 5,
+    "bear_score": 0,
+    "net_score": 5,
+    "drivers_bullish": [
+      {
+        "factor": "趋势偏多",
+        "impact": 3,
+        "logic": "趋势总分5.7/12，bearish_weak，方向偏上但力度一般",
+        "sustainability": "短期（1-2周）"
+      },
+      {
+        "factor": "持仓浮盈",
+        "impact": 2,
+        "logic": "浮盈16.0%，成本优势",
+        "sustainability": "持续"
+      }
+    ],
+    "drivers_bearish": [],
+    "scenarios": {
+      "乐观": {
+        "target": 29.78,
+        "probability": "35%",
+        "path": "放量突破MA20 → 测试布林上轨 → 向上拓展",
+        "condition": "需成交量放大至1.5倍+，MACD金叉确认"
+      },
+      "中性": {
+        "target": 25.79,
+        "probability": "45%",
+        "path": "在布林带中轨附近震荡 → 等待方向选择",
+        "condition": "维持当前量能水平"
+      },
+      "悲观": {
+        "target": 22.06,
+        "probability": "15%",
+        "path": "跌破MA20 → 测试布林下轨 → 可能加速下行",
+        "condition": "缩量下跌或放量破位"
+      }
+    },
+    "hazards": [
+      "流动性风险：缩量状态下突破概率低"
+    ],
+    "action_plan": "观望为主：等待方向确认，若放量突破25.79可轻仓跟进",
+    "top_bullish": "趋势偏多",
+    "top_bearish": "无"
+  },
+  "002366.SZ": {
+    "code": "002366.SZ",
+    "name": "融发核电",
+    "industry": "电力设备",
+    "date": "2026-05-19",
+    "price": 7.51,
+    "grade": "C",
+    "grade_desc": "多空分歧，方向不明，需等待催化",
+    "bull_score": 5,
+    "bear_score": 5,
+    "net_score": 0,
+    "drivers_bullish": [
+      {
+        "factor": "趋势强势",
+        "impact": 5,
+        "logic": "趋势总分9.5/12，MA排列bullish_weak，ADX=50.5趋势明确",
+        "sustainability": "中期持续（1-3个月）"
+      }
+    ],
+    "drivers_bearish": [
+      {
+        "factor": "止损逼近",
+        "impact": 5,
+        "logic": "距止损仅-14.4%，随时可能触发",
+        "sustainability": "即时风险"
+      }
+    ],
+    "scenarios": {
+      "乐观": {
+        "target": 8.28,
+        "probability": "25%",
+        "path": "放量突破MA20 → 测试布林上轨 → 向上拓展",
+        "condition": "需成交量放大至1.5倍+，MACD金叉确认"
+      },
+      "中性": {
+        "target": 7.45,
+        "probability": "50%",
+        "path": "在布林带中轨附近震荡 → 等待方向选择",
+        "condition": "维持当前量能水平"
+      },
+      "悲观": {
+        "target": 6.65,
+        "probability": "25%",
+        "path": "跌破MA20 → 测试布林下轨 → 可能加速下行",
+        "condition": "缩量下跌或放量破位"
+      }
+    },
+    "hazards": [
+      "流动性风险：缩量状态下突破概率低"
+    ],
+    "action_plan": "观望为主：等待方向确认，若放量突破7.45可轻仓跟进",
+    "top_bullish": "趋势强势",
+    "top_bearish": "止损逼近"
+  },
+  "688111.SH": {
+    "code": "688111.SH",
+    "name": "金山办公",
+    "industry": "计算机",
+    "date": "2026-05-19",
+    "price": 252.44,
+    "grade": "C",
+    "grade_desc": "多空分歧，方向不明，需等待催化",
+    "bull_score": 5,
+    "bear_score": 9,
+    "net_score": -4,
+    "drivers_bullish": [
+      {
+        "factor": "趋势强势",
+        "impact": 5,
+        "logic": "趋势总分7.8/12，MA排列sideways，ADX=45.5趋势明确",
+        "sustainability": "中期持续（1-3个月）"
+      }
+    ],
+    "drivers_bearish": [
+      {
+        "factor": "止损逼近",
+        "impact": 5,
+        "logic": "距止损仅-36.4%，随时可能触发",
+        "sustainability": "即时风险"
+      },
+      {
+        "factor": "深度套牢",
+        "impact": 4,
+        "logic": "浮亏-41.5%，解套难度大",
+        "sustainability": "长期压力"
+      }
+    ],
+    "scenarios": {
+      "乐观": {
+        "target": 286.72,
+        "probability": "17%",
+        "path": "放量突破MA20 → 测试布林上轨 → 向上拓展",
+        "condition": "需成交量放大至1.5倍+，MACD金叉确认"
+      },
+      "中性": {
+        "target": 255.47,
+        "probability": "46%",
+        "path": "在布林带中轨附近震荡 → 等待方向选择",
+        "condition": "维持当前量能水平"
+      },
+      "悲观": {
+        "target": 225.98,
+        "probability": "33%",
+        "path": "跌破MA20 → 测试布林下轨 → 可能加速下行",
+        "condition": "缩量下跌或放量破位"
+      }
+    },
+    "hazards": [
+      "多空失衡：利空因子占优，需等待利空出尽"
+    ],
+    "action_plan": "观望为主：等待方向确认，若放量突破255.47可轻仓跟进",
+    "top_bullish": "趋势强势",
+    "top_bearish": "止损逼近"
+  },
+  "301638.SZ": {
+    "code": "301638.SZ",
+    "name": "南网数字",
+    "industry": "计算机",
+    "date": "2026-05-19",
+    "price": 30.69,
+    "grade": "B",
+    "grade_desc": "偏多确定，但存在一定隐患",
+    "bull_score": 7,
+    "bear_score": 0,
+    "net_score": 7,
+    "drivers_bullish": [
+      {
+        "factor": "趋势强势",
+        "impact": 5,
+        "logic": "趋势总分11.4/12，MA排列bullish_weak，ADX=98.6趋势明确",
+        "sustainability": "中期持续（1-3个月）"
+      },
+      {
+        "factor": "持仓浮盈",
+        "impact": 2,
+        "logic": "浮盈13.6%，成本优势",
+        "sustainability": "持续"
+      }
+    ],
+    "drivers_bearish": [],
+    "scenarios": {
+      "乐观": {
+        "target": 33.61,
+        "probability": "39%",
+        "path": "放量突破MA20 → 测试布林上轨 → 向上拓展",
+        "condition": "需成交量放大至1.5倍+，MACD金叉确认"
+      },
+      "中性": {
+        "target": 29.07,
+        "probability": "43%",
+        "path": "在布林带中轨附近震荡 → 等待方向选择",
+        "condition": "维持当前量能水平"
+      },
+      "悲观": {
+        "target": 24.81,
+        "probability": "15%",
+        "path": "跌破MA20 → 测试布林下轨 → 可能加速下行",
+        "condition": "缩量下跌或放量破位"
+      }
+    },
+    "hazards": [
+      "当前无明显隐患，但需持续跟踪量能变化"
+    ],
+    "action_plan": "偏多操作：可在支撑位附近布局，止损设于26.12，目标33.61",
+    "top_bullish": "趋势强势",
+    "top_bearish": "无"
+  },
+  "601929.SH": {
+    "code": "601929.SH",
+    "name": "吉视传媒",
+    "industry": "传媒",
+    "date": "2026-05-19",
+    "price": 3.33,
+    "grade": "C",
+    "grade_desc": "多空分歧，方向不明，需等待催化",
+    "bull_score": 9,
+    "bear_score": 8,
+    "net_score": 1,
+    "drivers_bullish": [
+      {
+        "factor": "趋势强势",
+        "impact": 5,
+        "logic": "趋势总分10.8/12，MA排列bullish_weak，ADX=83.2趋势明确",
+        "sustainability": "中期持续（1-3个月）"
+      },
+      {
+        "factor": "放量资金流入",
+        "impact": 4,
+        "logic": "成交量2.6倍均量，资金积极介入",
+        "sustainability": "需观察持续性，1-2天确认"
+      }
+    ],
+    "drivers_bearish": [
+      {
+        "factor": "超买",
+        "impact": 3,
+        "logic": "RSI=72.4偏高，追涨风险增大",
+        "sustainability": "短期"
+      },
+      {
+        "factor": "止损逼近",
+        "impact": 5,
+        "logic": "距止损仅-20.1%，随时可能触发",
+        "sustainability": "即时风险"
+      }
+    ],
+    "scenarios": {
+      "乐观": {
+        "target": 3.36,
+        "probability": "27%",
+        "path": "放量突破MA20 → 测试布林上轨 → 向上拓展",
+        "condition": "需成交量放大至1.5倍+，MACD金叉确认"
+      },
+      "中性": {
+        "target": 2.99,
+        "probability": "49%",
+        "path": "在布林带中轨附近震荡 → 等待方向选择",
+        "condition": "维持当前量能水平"
+      },
+      "悲观": {
+        "target": 2.64,
+        "probability": "23%",
+        "path": "跌破MA20 → 测试布林下轨 → 可能加速下行",
+        "condition": "缩量下跌或放量破位"
+      }
+    },
+    "hazards": [
+      "当前无明显隐患，但需持续跟踪量能变化"
+    ],
+    "action_plan": "观望为主：等待方向确认，若放量突破2.99可轻仓跟进",
+    "top_bullish": "趋势强势",
+    "top_bearish": "超买"
+  },
+  "688107.SH": {
+    "code": "688107.SH",
+    "name": "安路科技",
+    "industry": "电子",
+    "date": "2026-05-19",
+    "price": 45.66,
+    "grade": "B",
+    "grade_desc": "偏多确定，但存在一定隐患",
+    "bull_score": 7,
+    "bear_score": 5,
+    "net_score": 2,
+    "drivers_bullish": [
+      {
+        "factor": "趋势强势",
+        "impact": 5,
+        "logic": "趋势总分10.0/12，MA排列bullish，ADX=24.6趋势明确",
+        "sustainability": "中期持续（1-3个月）"
+      },
+      {
+        "factor": "持仓浮盈",
+        "impact": 2,
+        "logic": "浮盈22.4%，成本优势",
+        "sustainability": "持续"
+      }
+    ],
+    "drivers_bearish": [
+      {
+        "factor": "严重超买",
+        "impact": 5,
+        "logic": "RSI=92.4极端超买，短期回调概率极高",
+        "sustainability": "短期（1-3天）"
+      }
+    ],
+    "scenarios": {
+      "乐观": {
+        "target": 49.3,
+        "probability": "29%",
+        "path": "放量突破MA20 → 测试布林上轨 → 向上拓展",
+        "condition": "需成交量放大至1.5倍+，MACD金叉确认"
+      },
+      "中性": {
+        "target": 35.67,
+        "probability": "48%",
+        "path": "在布林带中轨附近震荡 → 等待方向选择",
+        "condition": "维持当前量能水平"
+      },
+      "悲观": {
+        "target": 23.18,
+        "probability": "21%",
+        "path": "跌破MA20 → 测试布林下轨 → 可能加速下行",
+        "condition": "缩量下跌或放量破位"
+      }
+    },
+    "hazards": [
+      "超买回调风险：RSI偏高，短期可能3-5%回撤"
+    ],
+    "action_plan": "偏多操作：可在支撑位附近布局，止损设于24.4，目标49.3",
+    "top_bullish": "趋势强势",
+    "top_bearish": "严重超买"
+  },
+  "603259.SH": {
+    "code": "603259.SH",
+    "name": "药明康德",
+    "industry": "医药生物",
+    "date": "2026-05-19",
+    "price": 101.39,
+    "grade": "B",
+    "grade_desc": "偏多确定，但存在一定隐患",
+    "bull_score": 7,
+    "bear_score": 0,
+    "net_score": 7,
+    "drivers_bullish": [
+      {
+        "factor": "趋势强势",
+        "impact": 5,
+        "logic": "趋势总分7.3/12，MA排列sideways，ADX=32.5趋势明确",
+        "sustainability": "中期持续（1-3个月）"
+      },
+      {
+        "factor": "持仓浮盈",
+        "impact": 2,
+        "logic": "浮盈2.4%，成本优势",
+        "sustainability": "持续"
+      }
+    ],
+    "drivers_bearish": [],
+    "scenarios": {
+      "乐观": {
+        "target": 119.96,
+        "probability": "39%",
+        "path": "放量突破MA20 → 测试布林上轨 → 向上拓展",
+        "condition": "需成交量放大至1.5倍+，MACD金叉确认"
+      },
+      "中性": {
+        "target": 104.69,
+        "probability": "43%",
+        "path": "在布林带中轨附近震荡 → 等待方向选择",
+        "condition": "维持当前量能水平"
+      },
+      "悲观": {
+        "target": 90.37,
+        "probability": "15%",
+        "path": "跌破MA20 → 测试布林下轨 → 可能加速下行",
+        "condition": "缩量下跌或放量破位"
+      }
+    },
+    "hazards": [
+      "流动性风险：缩量状态下突破概率低"
+    ],
+    "action_plan": "偏多操作：可在支撑位附近布局，止损设于95.13，目标119.96",
+    "top_bullish": "趋势强势",
+    "top_bearish": "无"
+  },
+  "600905.SH": {
+    "code": "600905.SH",
+    "name": "三峡能源",
+    "industry": "电力",
+    "date": "2026-05-19",
+    "price": 4.19,
+    "grade": "C",
+    "grade_desc": "多空交织，需进一步确认",
+    "bull_score": 5,
+    "bear_score": 0,
+    "net_score": 5,
+    "drivers_bullish": [
+      {
+        "factor": "趋势强势",
+        "impact": 5,
+        "logic": "趋势总分10.2/12，MA排列bullish_weak，ADX=68.4趋势明确",
+        "sustainability": "中期持续（1-3个月）"
+      }
+    ],
+    "drivers_bearish": [],
+    "scenarios": {
+      "乐观": {
+        "target": 4.43,
+        "probability": "35%",
+        "path": "放量突破MA20 → 测试布林上轨 → 向上拓展",
+        "condition": "需成交量放大至1.5倍+，MACD金叉确认"
+      },
+      "中性": {
+        "target": 4.13,
+        "probability": "45%",
+        "path": "在布林带中轨附近震荡 → 等待方向选择",
+        "condition": "维持当前量能水平"
+      },
+      "悲观": {
+        "target": 3.84,
+        "probability": "15%",
+        "path": "跌破MA20 → 测试布林下轨 → 可能加速下行",
+        "condition": "缩量下跌或放量破位"
+      }
+    },
+    "hazards": [
+      "流动性风险：缩量状态下突破概率低"
+    ],
+    "action_plan": "观望为主：等待方向确认，若放量突破4.13可轻仓跟进",
+    "top_bullish": "趋势强势",
+    "top_bearish": "无"
+  }
+}

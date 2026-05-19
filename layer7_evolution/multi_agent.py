@@ -313,66 +313,78 @@ class RiskAgent:
 class Chairman:
     """主席Agent — 综合裁定"""
 
-    def deliberate(self, code: str, name: str, agent_results: list) -> dict:
+
+    def deliberate(self, code, name, agent_results):
         scores = [r.get("score", 5) for r in agent_results if "score" in r]
         if not scores:
-            return {"verdict": "数据不足", "confidence": 0}
+            return {"verdict": "数据不足", "confidence": 0, "grade": "D"}
 
         avg_score = np.mean(scores)
         score_std = np.std(scores) if len(scores) > 1 else 0
 
-        # 各Agent权重
         weights = {"宏观": 0.10, "行业": 0.10, "基本面": 0.15,
                    "技术面": 0.35, "资金面": 0.15, "风控": 0.15}
-        weighted = 0
-        total_w = 0
+        weighted = 0; total_w = 0
         for r in agent_results:
-            agent = r.get("agent", "")
-            w = weights.get(agent, 0.1)
-            s = r.get("score", 5)
-            weighted += s * w
-            total_w += w
+            agent = r.get("agent", ""); w = weights.get(agent, 0.1); s = r.get("score", 5)
+            weighted += s * w; total_w += w
         final_score = weighted / total_w if total_w > 0 else avg_score
 
-        # 一致性判断
-        if score_std < 1.0:
-            consensus = "HIGH"  # 多Agent一致
-        elif score_std < 2.0:
-            consensus = "MEDIUM"
-        else:
-            consensus = "LOW"   # 分歧大，需警惕
+        if score_std < 1.0: consensus = "HIGH"
+        elif score_std < 2.0: consensus = "MEDIUM"
+        else: consensus = "LOW"
 
-        # 信号
-        if final_score >= 7:
-            signal = "STRONG_BUY"
-        elif final_score >= 5.5:
-            signal = "BUY"
-        elif final_score >= 4:
-            signal = "HOLD"
-        elif final_score >= 2.5:
-            signal = "REDUCE"
-        else:
-            signal = "SELL"
+        if final_score >= 7: signal = "STRONG_BUY"
+        elif final_score >= 5.5: signal = "BUY"
+        elif final_score >= 4: signal = "HOLD"
+        elif final_score >= 2.5: signal = "REDUCE"
+        else: signal = "SELL"
 
-        # 关键分歧点
+        bull_agents = sum(1 for s in scores if s >= 6)
+        bear_agents = sum(1 for s in scores if s <= 4)
+        net_agents = bull_agents - bear_agents
+
+        if final_score >= 6.5 and consensus == "HIGH" and net_agents >= 4:
+            grade = "A"; grade_desc = "高度确定看多"
+        elif final_score >= 5.5 and consensus in ("HIGH","MEDIUM") and net_agents >= 2:
+            grade = "B"; grade_desc = "偏多确定"
+        elif final_score <= 3.5 and consensus in ("HIGH","MEDIUM") and net_agents <= -3:
+            grade = "D"; grade_desc = "高度确定看空"
+        elif consensus == "LOW" or abs(final_score - 5) < 1.5:
+            grade = "C"; grade_desc = "多空分歧"
+        elif final_score >= 4.5:
+            grade = "B"; grade_desc = "偏多但不确定"
+        else:
+            grade = "C"; grade_desc = "中性偏弱"
+
+        logic_chain = []
+        for r in agent_results:
+            agent = r.get("agent","?"); s = r.get("score",5); sigs = r.get("signals",[])
+            if s >= 7: logic_chain.append(f"[{agent}] {s}/10 强看多: {'; '.join(sigs[:2])}")
+            elif s <= 3: logic_chain.append(f"[{agent}] {s}/10 看空: {'; '.join(sigs[:2])}")
+            else: logic_chain.append(f"[{agent}] {s}/10 中性")
+
         dissent = []
         if consensus == "LOW":
-            high = max(scores)
-            low = min(scores)
-            high_agent = [r.get("agent") for r in agent_results if r.get("score") == high]
-            low_agent = [r.get("agent") for r in agent_results if r.get("score") == low]
-            dissent.append(f"{'/'.join(high_agent)}看多({high}) vs {'/'.join(low_agent)}看空({low})")
+            high = max(scores); low = min(scores)
+            ha = [r.get("agent") for r in agent_results if r.get("score")==high]
+            la = [r.get("agent") for r in agent_results if r.get("score")==low]
+            dissent.append(f"{'/'.join(ha)}({high}) vs {'/'.join(la)}({low})")
+
+        hazards = []
+        for r in agent_results:
+            if r.get("agent")=="风控" and r.get("risk_level") in ("HIGH","CRITICAL"):
+                hazards.extend(r.get("signals",[]))
 
         return {
-            "code": code, "name": name,
-            "final_score": round(final_score, 1),
-            "signal": signal,
-            "consensus": consensus,
-            "confidence": round(1 - score_std / 5, 2),
-            "dissent": dissent,
-            "agent_scores": {r.get("agent", "?"): r.get("score", 5) for r in agent_results},
-            "verdict": f"综合评分{final_score:.1f}，{'一致看多' if consensus=='HIGH' else '存在分歧' if consensus=='LOW' else '中性'}",
+            "code": code, "name": name, "final_score": round(final_score,1),
+            "signal": signal, "grade": grade, "grade_desc": grade_desc,
+            "consensus": consensus, "confidence": round(1-score_std/5,2),
+            "dissent": dissent, "logic_chain": logic_chain, "hazards": hazards[:3],
+            "agent_scores": {r.get("agent","?"):r.get("score",5) for r in agent_results},
+            "verdict": f"等级{grade} | 综合{final_score:.1f} | {grade_desc}",
         }
+
 
 
 def multi_agent_analyze(code: str, name: str, industry: str,
