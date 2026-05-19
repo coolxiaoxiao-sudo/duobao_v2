@@ -1,4 +1,10 @@
-"""信号过滤降噪+三层一致性校验"""
+﻿"""信号过滤降噪+三层一致性校验
+
+最终收官定版功能：
+1. 信号过滤降噪 — 只输出高确定性机会
+2. 三层一致性校验 — 短期/中期/长期共振
+3. 每日净化 — 沉淀核心逻辑
+"""
 from __future__ import annotations
 import json, os
 from datetime import datetime
@@ -8,8 +14,7 @@ from core.config import config
 FILTER_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "filter")
 os.makedirs(FILTER_DIR, exist_ok=True)
 
-def filter_signal(code: str, short_score: float, mid_score: float, long_score: float,
-                  win_rate: float, profit_loss: float) -> dict:
+def filter_signal(code, short_score, mid_score, long_score, win_rate, profit_loss):
     """信号过滤 — 只输出高确定性机会"""
     # 三层一致性校验
     aligned = (short_score > 5 and mid_score > 5 and long_score > 5) or (short_score < 5 and mid_score < 5 and long_score < 5)
@@ -26,7 +31,7 @@ def filter_signal(code: str, short_score: float, mid_score: float, long_score: f
     else:
         return {"pass":False,"level":"C","reason":"不满足高确定性标准","action":"观望"}
 
-def three_layer_validation(code: str) -> dict:
+def three_layer_validation(code):
     """短期/中期/长期三层走势一致性校验"""
     try:
         from layer3_analysis.technical import compute
@@ -35,7 +40,7 @@ def three_layer_validation(code: str) -> dict:
         
         # 短期（日线）
         tech = compute(code)
-        short_trend = tech.get("rsi14",50) / 10  # 0-10分
+        short_trend = tech.get("rsi14",50) / 10
         
         # 中期（周线代理：20日趋势）
         tr = trend_compute(code, 20)
@@ -59,7 +64,7 @@ def three_layer_validation(code: str) -> dict:
     except Exception as e:
         return {"error": str(e), "valid": False}
 
-def daily_purification() -> dict:
+def daily_purification():
     """每日清空无效思路，沉淀核心逻辑"""
     core_principles = [
         "趋势跟随：均线多头排列持有，破位清仓",
@@ -75,17 +80,16 @@ def daily_purification() -> dict:
         "note": "体系越精简，执行越纯粹",
     }
 
-def batch_filter() -> dict:
+def batch_filter():
     """全持仓信号过滤"""
     results = {}
     for s in config.stocks:
         three = three_layer_validation(s["code"])
-        # 简化胜率盈亏比
         filt = filter_signal(s["code"], three.get("short",5), three.get("mid",5), three.get("long",5),
-                            0.55, 2.0)  # 默认中等水平
+                            0.55, 2.0)
         results[s["code"]] = {"name":s["name"], "three_layer":three, "filter":filt}
     
-    with open(os.path.join(FILTER_DIR,f"filter_{datetime.now().strftime('%Y%m%d')}.json"),"w",encoding="utf-8") as f:
+    with open(os.path.join(FILTER_DIR,"filter_"+datetime.now().strftime("%Y%m%d")+".json"),"w",encoding="utf-8") as f:
         json.dump(results,f,ensure_ascii=False,indent=2)
     
     passed = sum(1 for r in results.values() if r["filter"].get("pass"))
