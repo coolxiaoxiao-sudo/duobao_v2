@@ -91,10 +91,10 @@ portfolio:
     stop_type: ma20
     target: 9.0
   - code: 688107.SH
-    cost: 37.319
+    cost: 32.121
     industry: 电子
     name: 安路科技
-    stop: 33.17
+    stop: 28.9
     stop_type: ma20
     target: 54.08
   - code: 603259.SH
@@ -111,6 +111,20 @@ portfolio:
     stop: 3.782
     stop_type: ma20
     target: 5.042
+  - code: 688099.SH
+    cost: 303.936
+    industry: 电子
+    name: 安集科技
+    stop: 273.5
+    stop_type: ma20
+    target: 364.7
+  - code: 688633.SH
+    cost: 36.648
+    industry: 机械设备
+    name: 星球石墨
+    stop: 33.0
+    stop_type: ma5
+    target: 47.6
 schedule:
   closing_analysis: '15:02'
   evening_review: '18:00'
@@ -136,6 +150,3 @@ system:
   log_dir: C:/Users/alienware/Desktop/duobao_v2/logs
   obsidian_vault: C:/Users/alienware/Documents/多宝Vault
   source_db: C:/Users/alienware/database/investment.db
-
-
-
